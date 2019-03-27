@@ -7,7 +7,7 @@
 
 Feature: Convert reference and hypotheses to native schema
 	# Assuming the input has been mormalised before this stage,
-	# so here we're just splitting the string on space.
+	# so here we're just splitting the string on space, line break and tab.
 	# Other splitting logic (e.g. hyphens) should be dealt with in the normalisers.
 	
 
