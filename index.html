@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AI Benchmarking STT &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="LICENSE.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>AI Benchmarking STT</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ai-benchmarking-stt">
+<h1>AI Benchmarking STT<a class="headerlink" href="#ai-benchmarking-stt" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://github.com/ebu/benchmarkstt/blob/master/LICENCE.md"><img alt="https://img.shields.io/github/license/ebu/benchmarkstt.svg" src="https://img.shields.io/github/license/ebu/benchmarkstt.svg" /></a>
+<a class="reference external image-reference" href="https://dev.azure.com/danielthepope/benchmarkstt/_build/latest?definitionId=4&amp;branchName=master"><img alt="https://img.shields.io/azure-devops/build/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" src="https://img.shields.io/azure-devops/build/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" /></a>
+<a class="reference external image-reference" href="https://dev.azure.com/danielthepope/benchmarkstt/_build/latest?definitionId=4&amp;branchName=master"><img alt="https://img.shields.io/azure-devops/tests/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" src="https://img.shields.io/azure-devops/tests/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" /></a>
+<a class="reference external image-reference" href="https://dev.azure.com/danielthepope/benchmarkstt/_build"><img alt="https://img.shields.io/azure-devops/coverage/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" src="https://img.shields.io/azure-devops/coverage/danielthepope/benchmarkstt/4/master.svg?logo=azure-devops" /></a>
+<p>This is a collaborative project to create a library for benchmarking AI/ML applications. It evolved out of conversations among broadcasters and providers of Access Services to media organisations, but anyone is welcome to contribute. The group behind this project is the EBU’s <a class="reference external" href="https://tech.ebu.ch/groups/mim">Media Information Management &amp; AI group</a>. Currently the group is focussing on Speech-to-Text, but it will consider creating benchmarking tools for other AI/ML services.</p>
+<p>For general information about this project, including the <a class="reference external" href="https://github.com/ebu/benchmarkstt/wiki">motivations</a> and <a class="reference external" href="https://github.com/ebu/benchmarkstt/wiki/Principles">guiding principles</a>, please see the project <a class="reference external" href="https://github.com/ebu/benchmarkstt/wiki">wiki</a> and <a class="reference external" href="https://benchmarkstt.mikesmith.eu">documentation</a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INSTALL.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#from-pypi-preferred">From PyPI (preferred)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#from-source">From source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#removing-benchmarkstt">Removing benchmarkstt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="INSTALL.html#docker">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html">Using docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html">Command line tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#additional-tools">Additional tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#bash-completion">Bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api.html#starting-the-server">Starting the server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Using docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#build-the-image">Build the image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#run-the-image">Run the image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker.html#stopping-the-image">Stopping the image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#setting-up-environment">Setting up environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#contributing">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONTRIBUTING.html#pull-requests-and-branching">Pull requests and branching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/benchmarkstt.html">benchmarkstt package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/benchmarkstt.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.diff.html">benchmarkstt.diff package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/benchmarkstt.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.cli.html">benchmarkstt.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.config.html">benchmarkstt.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.csv.html">benchmarkstt.csv module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.decorators.html">benchmarkstt.decorators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.docblock.html">benchmarkstt.docblock module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.factory.html">benchmarkstt.factory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.modules.html">benchmarkstt.modules module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/benchmarkstt.schema.html">benchmarkstt.schema module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="LICENSE.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

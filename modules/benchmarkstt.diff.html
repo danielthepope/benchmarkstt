@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.diff package &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.diff.core module" href="benchmarkstt.diff.core.html" />
+    <link rel="prev" title="benchmarkstt.benchmark.cli module" href="benchmarkstt.benchmark.cli.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">benchmarkstt.diff package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-benchmarkstt.diff">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+      <li>benchmarkstt.diff package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.diff.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="benchmarkstt-diff-package">
+<h1>benchmarkstt.diff package<a class="headerlink" href="#benchmarkstt-diff-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.diff.core.html">benchmarkstt.diff.core module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.diff.formatter.html">benchmarkstt.diff.formatter module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-benchmarkstt.diff">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-benchmarkstt.diff" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="benchmarkstt.diff.Base">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.</code><code class="descname">Base</code><span class="sig-paren">(</span><em>a=''</em>, <em>b=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff.html#Base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.Base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="benchmarkstt.diff.Base.get_opcodes">
+<code class="descname">get_opcodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff.html#Base.get_opcodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.Base.get_opcodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of 5-tuples describing how to turn <cite>a</cite> into <cite>b</cite>.</p>
+<p>Each tuple is of the form <cite>(tag, i1, i2, j1, j2)</cite>. The first tuple has
+<cite>i1 == j1 == 0</cite>, and remaining tuples have <cite>i1</cite> equals the <cite>i2</cite> from the
+tuple preceding it, and likewise for <cite>j1</cite> equals the previous <cite>j2</cite>.</p>
+<p>The tags are strings, with these meanings:</p>
+<blockquote>
+<div><ul class="simple">
+<li>‘replace’: <cite>a[i1:i2]</cite> should be replaced by <cite>b[j1:j2]</cite></li>
+<li>‘delete’: <cite>a[i1:i2]</cite> should be deleted. Note that <cite>j1==j2</cite> in this case.</li>
+<li>‘insert’: <cite>b[j1:j2]</cite> should be inserted at <cite>a[i1:i1]</cite>. Note that <cite>i1==i2</cite> in this case.</li>
+<li>‘equal’: <cite>a[i1:i2] == b[j1:j2]</cite></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.diff.core.html" class="btn btn-neutral float-right" title="benchmarkstt.diff.core module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.benchmark.cli.html" class="btn btn-neutral" title="benchmarkstt.benchmark.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

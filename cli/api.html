@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Subcommand api &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Subcommand normalization" href="normalization.html" />
+    <link rel="prev" title="Command line tool" href="../cli.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../cli.html">Command line tool</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../cli.html#additional-tools">Additional tools</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Subcommand api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="normalization.html">Subcommand normalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="metrics.html">Subcommand metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cli.html#bash-completion">Bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docker.html">Using docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../usage.html">Usage</a> &raquo;</li>
+        
+          <li><a href="../cli.html">Command line tool</a> &raquo;</li>
+        
+      <li>Subcommand api</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cli/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="subcommand-api">
+<h1>Subcommand api<a class="headerlink" href="#subcommand-api" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="../api.html"><span class="doc">API</span></a> for more information on usage and available jsonrpc methods.</p>
+<p><p>Make benchmarkstt available through a rudimentary <a class="reference external" href="https://www.jsonrpc.org">JSON-RPC</a> interface</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Only supported for Python versions 3.6 and above</p>
+</div>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">benchmarkstt</span><span class="o">-</span><span class="n">tools</span> <span class="n">api</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">host</span> <span class="n">HOST</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span> <span class="n">PORT</span><span class="p">]</span>
+                              <span class="p">[</span><span class="o">--</span><span class="n">entrypoint</span> <span class="n">ENTRYPOINT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">list</span><span class="o">-</span><span class="n">methods</span><span class="p">]</span>
+                              <span class="p">[</span><span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">explorer</span><span class="p">]</span>
+                              <span class="p">[</span><span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">level</span> <span class="p">{</span><span class="n">critical</span><span class="p">,</span><span class="n">fatal</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">warn</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">debug</span><span class="p">,</span><span class="n">notset</span><span class="p">}]</span>
+                              <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h2>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>--debug</kbd></td>
+<td><p class="first">run in debug mode</p>
+<p class="last">Default: False</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--host</kbd></td>
+<td>hostname or ip to serve api</td></tr>
+<tr><td class="option-group">
+<kbd>--port</kbd></td>
+<td><p class="first">port used by the server</p>
+<p class="last">Default: 8080</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--entrypoint</kbd></td>
+<td><p class="first">the jsonrpc api address</p>
+<p class="last">Default: “/api”</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--list-methods</kbd></td>
+<td><p class="first">list the available jsonrpc methods</p>
+<p class="last">Default: False</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd>--with-explorer</kbd></td>
+</tr>
+<tr><td>&#160;</td><td><p class="first">also create the explorer to test api calls with, this is a rudimentary feature currently only meant for testing and debugging.
+Warning: the API explorer is provided as-is, without any tests or code reviews. This is marked as a low-priority feature.</p>
+<p class="last">Default: False</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--log-level</kbd></td>
+<td><p class="first">Possible choices: critical, fatal, error, warn, warning, info, debug, notset</p>
+<p>set the logging output level</p>
+<p class="last">Default: warning</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="normalization.html" class="btn btn-neutral float-right" title="Subcommand normalization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../cli.html" class="btn btn-neutral" title="Command line tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

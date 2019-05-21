@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.normalization.api &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../benchmarkstt.html">benchmarkstt</a> &raquo;</li>
+        
+          <li><a href="../normalization.html">benchmarkstt.normalization</a> &raquo;</li>
+        
+      <li>benchmarkstt.normalization.api</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for benchmarkstt.normalization.api</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">benchmarkstt.normalization.logger</span> <span class="k">import</span> <span class="n">ListHandler</span><span class="p">,</span> <span class="n">DiffLoggingFormatter</span><span class="p">,</span> <span class="n">normalize_logger</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">benchmarkstt.csv</span> <span class="k">as</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">benchmarkstt.normalization</span> <span class="k">as</span> <span class="nn">normalization</span>
+
+<span class="n">factory</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">factory</span>
+
+
+<div class="viewcode-block" id="callback"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.api.html#benchmarkstt.normalization.api.callback">[docs]</a><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">return_logs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param str text: The text to normalize</span>
+<span class="sd">    :param bool return_logs: Return normalizer logs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">return_logs</span><span class="p">:</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">ListHandler</span><span class="p">()</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">DiffLoggingFormatter</span><span class="p">(</span><span class="n">dialect</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">))</span>
+        <span class="n">normalize_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">return_logs</span><span class="p">:</span>
+            <span class="n">logs</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;logs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">log</span> <span class="ow">in</span> <span class="n">logs</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="s1">&#39;logs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="n">log</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">log</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">except</span> <span class="n">csv</span><span class="o">.</span><span class="n">CSVParserError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;on line </span><span class="si">%d</span><span class="s1">, character </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">message</span><span class="p">])</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span>
+            <span class="s2">&quot;line&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">line</span><span class="p">,</span>
+            <span class="s2">&quot;char&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">char</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+            <span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;config&quot;</span>
+        <span class="p">}</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">return_logs</span><span class="p">:</span>
+            <span class="n">normalize_logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

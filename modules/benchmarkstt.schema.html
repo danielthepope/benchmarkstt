@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.schema module &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="benchmarkstt.modules module" href="benchmarkstt.modules.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.cli.html">benchmarkstt.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.config.html">benchmarkstt.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.csv.html">benchmarkstt.csv module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.decorators.html">benchmarkstt.decorators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.docblock.html">benchmarkstt.docblock module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.factory.html">benchmarkstt.factory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.modules.html">benchmarkstt.modules module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">benchmarkstt.schema module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+      <li>benchmarkstt.schema module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.schema.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-benchmarkstt.schema">
+<span id="benchmarkstt-schema-module"></span><h1>benchmarkstt.schema module<a class="headerlink" href="#module-benchmarkstt.schema" title="Permalink to this headline">¶</a></h1>
+<p>Defines the main schema for comparison and implements json serialization</p>
+<dl class="class">
+<dt id="benchmarkstt.schema.Item">
+<em class="property">class </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">Item</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code></p>
+<p>Basic structure of each field to compare</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ValueError, SchemaInvalidItemError</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="benchmarkstt.schema.Item.json">
+<code class="descname">json</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Item.json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Item.json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.schema.JSONDecoder">
+<em class="property">class </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">JSONDecoder</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#JSONDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.JSONDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">json.decoder.JSONDecoder</span></code></p>
+<p>Custom JSON decoding for schema</p>
+<dl class="method">
+<dt id="benchmarkstt.schema.JSONDecoder.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#JSONDecoder.decode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.JSONDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Python representation of <code class="docutils literal notranslate"><span class="pre">s</span></code> (a <code class="docutils literal notranslate"><span class="pre">str</span></code> instance
+containing a JSON document).</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.schema.JSONDecoder.object_hook">
+<em class="property">static </em><code class="descname">object_hook</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#JSONDecoder.object_hook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.JSONDecoder.object_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.schema.JSONEncoder">
+<em class="property">class </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">JSONEncoder</code><span class="sig-paren">(</span><em>*</em>, <em>skipkeys=False</em>, <em>ensure_ascii=True</em>, <em>check_circular=True</em>, <em>allow_nan=True</em>, <em>sort_keys=False</em>, <em>indent=None</em>, <em>separators=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#JSONEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.JSONEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<p>Custom JSON encoding for schema</p>
+<dl class="method">
+<dt id="benchmarkstt.schema.JSONEncoder.default">
+<code class="descname">default</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#JSONEncoder.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.JSONEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method in a subclass such that it returns
+a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
+(to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
+<p>For example, to support arbitrary iterators, you could
+implement default like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="c1"># Let the base class default method raise the TypeError</span>
+    <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.schema.Meta">
+<em class="property">class </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">Meta</code><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.defaultdict</span></code></p>
+<p>Containing metadata for an item, such as skipped</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.schema.Schema">
+<em class="property">class </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">Schema</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Basically a list of <a class="reference internal" href="#benchmarkstt.schema.Item" title="benchmarkstt.schema.Item"><code class="xref py py-class docutils literal notranslate"><span class="pre">Item</span></code></a></p>
+<dl class="method">
+<dt id="benchmarkstt.schema.Schema.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>obj: Union[benchmarkstt.schema.Item, dict]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.schema.Schema.dump">
+<em class="property">static </em><code class="descname">dump</code><span class="sig-paren">(</span><em>cls</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.schema.Schema.dumps">
+<em class="property">static </em><code class="descname">dumps</code><span class="sig-paren">(</span><em>cls</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.dumps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.dumps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.schema.Schema.extend">
+<code class="descname">extend</code><span class="sig-paren">(</span><em>iterable</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.extend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.extend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.schema.Schema.json">
+<code class="descname">json</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.schema.Schema.load">
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.schema.Schema.loads">
+<em class="property">static </em><code class="descname">loads</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/schema.html#Schema.loads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.Schema.loads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.schema.SchemaError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">SchemaError</code><a class="reference internal" href="../_modules/benchmarkstt/schema.html#SchemaError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.SchemaError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>Top Error class for all schema related exceptions</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.schema.SchemaInvalidItemError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">SchemaInvalidItemError</code><a class="reference internal" href="../_modules/benchmarkstt/schema.html#SchemaInvalidItemError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.SchemaInvalidItemError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.schema.SchemaError" title="benchmarkstt.schema.SchemaError"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.schema.SchemaError</span></code></a></p>
+<p>Attempting to add an invalid item</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.schema.SchemaJSONError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.schema.</code><code class="descname">SchemaJSONError</code><a class="reference internal" href="../_modules/benchmarkstt/schema.html#SchemaJSONError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.schema.SchemaJSONError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.schema.SchemaError" title="benchmarkstt.schema.SchemaError"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.schema.SchemaError</span></code></a></p>
+<p>When loading incompatible JSON</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="benchmarkstt.modules.html" class="btn btn-neutral" title="benchmarkstt.modules module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

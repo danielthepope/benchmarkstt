@@ -1,0 +1,37 @@
+benchmarkstt package
+====================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    benchmarkstt.api
+    benchmarkstt.benchmark
+    benchmarkstt.diff
+    benchmarkstt.input
+    benchmarkstt.metrics
+    benchmarkstt.normalization
+    benchmarkstt.segmentation
+
+Submodules
+----------
+
+.. toctree::
+
+   benchmarkstt.cli
+   benchmarkstt.config
+   benchmarkstt.csv
+   benchmarkstt.decorators
+   benchmarkstt.docblock
+   benchmarkstt.factory
+   benchmarkstt.modules
+   benchmarkstt.schema
+
+Module contents
+---------------
+
+.. automodule:: benchmarkstt
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,18 @@
+benchmarkstt.diff package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+
+   benchmarkstt.diff.core
+   benchmarkstt.diff.formatter
+
+Module contents
+---------------
+
+.. automodule:: benchmarkstt.diff
+    :members:
+    :undoc-members:
+    :show-inheritance:

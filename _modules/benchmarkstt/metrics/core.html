@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.metrics.core &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../benchmarkstt.html">benchmarkstt</a> &raquo;</li>
+        
+          <li><a href="../metrics.html">benchmarkstt.metrics</a> &raquo;</li>
+        
+      <li>benchmarkstt.metrics.core</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for benchmarkstt.metrics.core</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">benchmarkstt.schema</span> <span class="k">import</span> <span class="n">Schema</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt.diff.core</span> <span class="k">import</span> <span class="n">RatcliffObershelp</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt.diff.formatter</span> <span class="k">import</span> <span class="n">format_diff</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt.metrics</span> <span class="k">import</span> <span class="n">Base</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">OpcodeCounts</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;OpcodeCounts&#39;</span><span class="p">,</span>
+                          <span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="traversible"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.traversible">[docs]</a><span class="k">def</span> <span class="nf">traversible</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;item&#39;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="get_opcode_counts"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.get_opcode_counts">[docs]</a><span class="k">def</span> <span class="nf">get_opcode_counts</span><span class="p">(</span><span class="n">opcodes</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">OpcodeCounts</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="n">alo</span><span class="p">,</span> <span class="n">ahi</span><span class="p">,</span> <span class="n">blo</span><span class="p">,</span> <span class="n">bhi</span> <span class="ow">in</span> <span class="n">opcodes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">]:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ahi</span> <span class="o">-</span> <span class="n">alo</span>
+        <span class="k">elif</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;insert&#39;</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span> <span class="o">+=</span> <span class="n">bhi</span> <span class="o">-</span> <span class="n">blo</span>
+    <span class="k">return</span> <span class="n">OpcodeCounts</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="s1">&#39;equal&#39;</span><span class="p">],</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;replace&#39;</span><span class="p">],</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;insert&#39;</span><span class="p">],</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;delete&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="get_differ"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.get_differ">[docs]</a><span class="k">def</span> <span class="nf">get_differ</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">differ_class</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">differ_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># differ_class = HuntMcIlroy</span>
+        <span class="n">differ_class</span> <span class="o">=</span> <span class="n">RatcliffObershelp</span>
+    <span class="k">return</span> <span class="n">differ_class</span><span class="p">(</span><span class="n">traversible</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">traversible</span><span class="p">(</span><span class="n">b</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="WordDiffs"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.WordDiffs">[docs]</a><span class="k">class</span> <span class="nc">WordDiffs</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the differences on a per-word basis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span> <span class="o">=</span> <span class="n">differ_class</span>
+        <span class="k">if</span> <span class="n">dialect</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dialect</span> <span class="o">=</span> <span class="s1">&#39;cli&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dialect</span> <span class="o">=</span> <span class="n">dialect</span>
+
+<div class="viewcode-block" id="WordDiffs.compare"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.WordDiffs.compare">[docs]</a>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">hyp</span><span class="p">:</span> <span class="n">Schema</span><span class="p">):</span>
+        <span class="n">differ</span> <span class="o">=</span> <span class="n">get_differ</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">hyp</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">traversible</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">traversible</span><span class="p">(</span><span class="n">hyp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">format_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">differ</span><span class="o">.</span><span class="n">get_opcodes</span><span class="p">(),</span>
+                           <span class="n">dialect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_dialect</span><span class="p">,</span>
+                           <span class="n">preprocessor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">),))</span></div></div>
+
+
+<div class="viewcode-block" id="WER"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.WER">[docs]</a><span class="k">class</span> <span class="nc">WER</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Word Error Rate, basically defined as:</span>
+
+<span class="sd">    .. code-block:: text</span>
+
+<span class="sd">        insertions + deletions + substitions</span>
+<span class="sd">        ------------------------------------</span>
+<span class="sd">             number of reference words</span>
+
+<span class="sd">    See: https://en.wikipedia.org/wiki/Word_error_rate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO: proper documenting of different modes</span>
+    <span class="n">MODE_STRICT</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">MODE_HUNT</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">DEL_PENALTY</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">INS_PENALTY</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">SUB_PENALTY</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">differ_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">differ_class</span> <span class="o">=</span> <span class="n">RatcliffObershelp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span> <span class="o">=</span> <span class="n">differ_class</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_HUNT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">DEL_PENALTY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INS_PENALTY</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
+
+<div class="viewcode-block" id="WER.compare"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.WER.compare">[docs]</a>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">hyp</span><span class="p">:</span> <span class="n">Schema</span><span class="p">):</span>
+        <span class="n">diffs</span> <span class="o">=</span> <span class="n">get_differ</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">hyp</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span><span class="p">)</span>
+
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">get_opcode_counts</span><span class="p">(</span><span class="n">diffs</span><span class="o">.</span><span class="n">get_opcodes</span><span class="p">())</span>
+
+        <span class="n">changes</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">replace</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">SUB_PENALTY</span> <span class="o">+</span> \
+            <span class="n">counts</span><span class="o">.</span><span class="n">delete</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEL_PENALTY</span> <span class="o">+</span> \
+            <span class="n">counts</span><span class="o">.</span><span class="n">insert</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">INS_PENALTY</span>
+
+        <span class="k">return</span> <span class="n">changes</span> <span class="o">/</span> <span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">equal</span> <span class="o">+</span> <span class="n">changes</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DiffCounts"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.DiffCounts">[docs]</a><span class="k">class</span> <span class="nc">DiffCounts</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the amount of differences between reference and hypothesis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">differ_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">differ_class</span> <span class="o">=</span> <span class="n">RatcliffObershelp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span> <span class="o">=</span> <span class="n">differ_class</span>
+
+<div class="viewcode-block" id="DiffCounts.compare"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.DiffCounts.compare">[docs]</a>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">hyp</span><span class="p">:</span> <span class="n">Schema</span><span class="p">):</span>
+        <span class="n">diffs</span> <span class="o">=</span> <span class="n">get_differ</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">hyp</span><span class="p">,</span> <span class="n">differ_class</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">get_opcode_counts</span><span class="p">(</span><span class="n">diffs</span><span class="o">.</span><span class="n">get_opcodes</span><span class="p">())</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

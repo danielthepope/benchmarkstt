@@ -1,0 +1,7 @@
+benchmarkstt.diff.core module
+=============================
+
+.. automodule:: benchmarkstt.diff.core
+    :members:
+    :undoc-members:
+    :show-inheritance:

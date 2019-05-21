@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.normalization.core &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../benchmarkstt.html">benchmarkstt</a> &raquo;</li>
+        
+          <li><a href="../normalization.html">benchmarkstt.normalization</a> &raquo;</li>
+        
+      <li>benchmarkstt.normalization.core</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for benchmarkstt.normalization.core</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Some basic/simple normalization classes</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">unidecode</span> <span class="k">import</span> <span class="n">unidecode</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">normalization</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">DEFAULT_ENCODING</span>
+
+
+<div class="viewcode-block" id="Replace"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Replace">[docs]</a><span class="k">class</span> <span class="nc">Replace</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">BaseWithFileSupport</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple search replace</span>
+
+<span class="sd">    :param str search: Text to search for</span>
+<span class="sd">    :param str replace: Text to replace with</span>
+
+<span class="sd">    :example text: &quot;Nudge nudge!&quot;</span>
+<span class="sd">    :example search: &quot;nudge&quot;</span>
+<span class="sd">    :example replace: &quot;wink&quot;</span>
+<span class="sd">    :example return: &quot;Nudge wink!&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span> <span class="o">=</span> <span class="n">replace</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_search</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ReplaceWords"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.ReplaceWords">[docs]</a><span class="k">class</span> <span class="nc">ReplaceWords</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">BaseWithFileSupport</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple search replace that only replaces &quot;words&quot;, the first letter will be</span>
+<span class="sd">    checked case insensitive as well with preservation of case..</span>
+
+<span class="sd">    :param str search: Word to search for</span>
+<span class="sd">    :param str replace: Replace with</span>
+
+<span class="sd">    :example text: &quot;She has a heart of formica&quot;</span>
+<span class="sd">    :example search: &quot;a&quot;</span>
+<span class="sd">    :example replace: &quot;the&quot;</span>
+<span class="sd">    :example return: &quot;She has the heart of formica&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">search</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">replace</span> <span class="o">=</span> <span class="n">replace</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">,</span> <span class="p">[</span>
+            <span class="n">search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+            <span class="n">search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+            <span class="n">search</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">]))</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?&lt;!\w)[</span><span class="si">%s%s</span><span class="s1">]</span><span class="si">%s</span><span class="s1">(?!\w)&#39;</span> <span class="o">%</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span> <span class="o">=</span> <span class="n">replace</span>
+
+    <span class="k">def</span> <span class="nf">_replacement_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matches</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">matches</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replace</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_replacement_callback</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Regex"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Regex">[docs]</a><span class="k">class</span> <span class="nc">Regex</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">BaseWithFileSupport</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple regex replace. By default the pattern is interpreted</span>
+<span class="sd">    case-sensitive.</span>
+
+<span class="sd">    Case-insensitivity is supported by adding inline modifiers.</span>
+
+<span class="sd">    You might want to use capturing groups to preserve the case. When replacing</span>
+<span class="sd">    a character not captured, the information about its case is lost...</span>
+
+<span class="sd">    Eg. would replace &quot;HAHA! Hahaha!&quot; to &quot;HeHe! Hehehe!&quot;:</span>
+
+<span class="sd">     +------------------+-------------+</span>
+<span class="sd">     | search           | replace     |</span>
+<span class="sd">     +==================+=============+</span>
+<span class="sd">     | :code:`(?i)(h)a` | :code:`\1e` |</span>
+<span class="sd">     +------------------+-------------+</span>
+
+
+<span class="sd">    No regex flags are set by default, you can set them yourself though in the</span>
+<span class="sd">    regex, and combine them at will, eg. multiline, dotall and ignorecase.</span>
+
+<span class="sd">    Eg. would replace &quot;New&lt;CRLF&gt;line&quot; to &quot;newline&quot;:</span>
+
+<span class="sd">     +------------------------+------------------+</span>
+<span class="sd">     | search                 | replace          |</span>
+<span class="sd">     +========================+==================+</span>
+<span class="sd">     | :code:`(?msi)new.line` | :code:`newline`  |</span>
+<span class="sd">     +------------------------+------------------+</span>
+
+<span class="sd">    :example text: &quot;HAHA! Hahaha!&quot;</span>
+<span class="sd">    :example search: &#39;(?i)(h)a&#39;</span>
+<span class="sd">    :example replace: r&#39;\1e&#39;</span>
+<span class="sd">    :example return: &quot;HeHe! Hehehe!&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_substitution</span> <span class="o">=</span> <span class="n">replace</span> <span class="k">if</span> <span class="n">replace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_substitution</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Lowercase"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Lowercase">[docs]</a><span class="k">class</span> <span class="nc">Lowercase</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lowercase the text</span>
+
+
+<span class="sd">    :example text: &quot;Easy, Mungo, easy... Mungo...&quot;</span>
+<span class="sd">    :example return: &quot;easy, mungo, easy... mungo...&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Unidecode"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Unidecode">[docs]</a><span class="k">class</span> <span class="nc">Unidecode</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unidecode characters to ASCII form, see `Python&#39;s Unidecode package</span>
+<span class="sd">    &lt;https://pypi.org/project/Unidecode&gt;`_ for more info.</span>
+
+<span class="sd">    :example text: &quot;𝖂𝖊𝖓𝖓 𝖎𝖘𝖙 𝖉𝖆𝖘 𝕹𝖚𝖓𝖘𝖙ü𝖈𝖐 𝖌𝖎𝖙 𝖚𝖓𝖉 𝕾𝖑𝖔𝖙𝖊𝖗𝖒𝖊𝖞𝖊𝖗?&quot;</span>
+<span class="sd">    :example return: &quot;Wenn ist das Nunstuck git und Slotermeyer?&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use config file notation to define normalization rules. This notation is a</span>
+<span class="sd">    list of normalizers, one per line.</span>
+
+<span class="sd">    Each normalizer that is based needs a file is followed by a file name of a</span>
+<span class="sd">    csv, and can be optionally followed by the file encoding (if different than</span>
+<span class="sd">    default).</span>
+<span class="sd">    All options are loaded in from this csv and applied to the normalizer.</span>
+
+<span class="sd">    The normalizers can be any of the core normalizers, or you can refer to your</span>
+<span class="sd">    own normalizer class (like you would use in a python import, eg.</span>
+<span class="sd">    `my.own.package.MyNormalizerClass`).</span>
+
+<span class="sd">    Additional rules:</span>
+<span class="sd">      - Normalizer names are case-insensitive.</span>
+<span class="sd">      - Arguments MAY be wrapped in double quotes.</span>
+<span class="sd">      - If an argument contains a space, newline or double quote, it MUST be</span>
+<span class="sd">        wrapped in double quotes.</span>
+<span class="sd">      - A double quote itself is represented in this quoted argument as two</span>
+<span class="sd">        double quotes: `&quot;&quot;`.</span>
+
+<span class="sd">    The normalization rules are applied top-to-bottom and follow this format:</span>
+
+<span class="sd">    .. code-block:: text</span>
+
+<span class="sd">        # This is a comment</span>
+
+<span class="sd">        # (Normalizer2 has no arguments)</span>
+<span class="sd">        lowercase</span>
+
+<span class="sd">        # loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding</span>
+<span class="sd">        regex regexrules.csv &quot;utf 8&quot;</span>
+
+<span class="sd">        # load another config file, [section1] and [section2]</span>
+<span class="sd">        config configfile.ini section1</span>
+<span class="sd">        config configfile.ini section2</span>
+
+<span class="sd">        # loads replace expressions from replaces.csv in default encoding</span>
+<span class="sd">        replace     replaces.csv</span>
+
+<span class="sd">    :param file: The config file</span>
+<span class="sd">    :param encoding: The file encoding</span>
+<span class="sd">    :param section: The subsection of the config file to use (if applicable)</span>
+
+<span class="sd">    :example text: &quot;He bravely turned his tail and fled&quot;</span>
+<span class="sd">    :example file: &quot;./resources/test/normalizers/configfile.conf&quot;</span>
+<span class="sd">    :example encoding: &quot;UTF-8&quot;</span>
+<span class="sd">    :example return: &quot;ha bravalY Turnad his tail and flad&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">default_section</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">encoding</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="n">DEFAULT_ENCODING</span>
+
+        <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_section</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
+            <span class="c1"># next filenames are relative from path of the config file...</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">file</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">reader</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;rawinput&#39;</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="n">section</span><span class="p">]</span>
+            <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_normalizer</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">NormalizationComposite</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">normalization</span><span class="o">.</span><span class="n">file_factory</span><span class="p">:</span>
+                    <span class="n">normalizer</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">file_factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">line</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">normalizer</span> <span class="o">=</span> <span class="n">normalization</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">line</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_normalizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">normalizer</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown normalizer </span><span class="si">%s</span><span class="s2"> on line </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                 <span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">line</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="p">))))</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalizer</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

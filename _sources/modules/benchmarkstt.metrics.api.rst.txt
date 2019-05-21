@@ -1,0 +1,7 @@
+benchmarkstt.metrics.api module
+===============================
+
+.. automodule:: benchmarkstt.metrics.api
+    :members:
+    :undoc-members:
+    :show-inheritance:

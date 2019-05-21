@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.normalization package &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.normalization.api module" href="benchmarkstt.normalization.api.html" />
+    <link rel="prev" title="benchmarkstt.metrics.core module" href="benchmarkstt.metrics.core.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.diff.html">benchmarkstt.diff package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">benchmarkstt.normalization package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-benchmarkstt.normalization">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+      <li>benchmarkstt.normalization package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.normalization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="benchmarkstt-normalization-package">
+<h1>benchmarkstt.normalization package<a class="headerlink" href="#benchmarkstt-normalization-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.normalization.api.html">benchmarkstt.normalization.api module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.normalization.cli.html">benchmarkstt.normalization.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.normalization.core.html">benchmarkstt.normalization.core module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.normalization.logger.html">benchmarkstt.normalization.logger module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-benchmarkstt.normalization">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-benchmarkstt.normalization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="benchmarkstt.normalization.Base">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.</code><code class="descname">Base</code><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#Base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.Base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="benchmarkstt.normalization.Base.normalize">
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.normalization.Base.normalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.BaseWithFileSupport">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.</code><code class="descname">BaseWithFileSupport</code><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#BaseWithFileSupport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.BaseWithFileSupport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>This kind of normalization class supports loading the values from a file, i.e.
+being wrapped in a core.File wrapper.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.File">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.</code><code class="descname">File</code><span class="sig-paren">(</span><em>normalizer</em>, <em>file</em>, <em>encoding=None</em>, <em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#File"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>Read one per line and pass it to the given normalizer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>normalizer</strong> (<em>str|class</em>) – Normalizer name (or class)</li>
+<li><strong>file</strong> (<em>str</em>) – The file to read rules from</li>
+<li><strong>encoding</strong> (<em>str</em>) – The file encoding</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example text:</th><td class="field-body"><p class="first">“This is an Ex-Parakeet”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Example normalizer:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">“regex”</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example file:</th><td class="field-body"><p class="first">“./resources/test/normalizers/regex/en_US”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Example encoding:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">“UTF-8”</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example return:</th><td class="field-body"><p class="first last">“This is an Ex Parrot”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.FileFactory">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.</code><code class="descname">FileFactory</code><span class="sig-paren">(</span><em>base_class</em>, <em>namespaces=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#FileFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.FileFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.factory.html#benchmarkstt.factory.Factory" title="benchmarkstt.factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.factory.Factory</span></code></a></p>
+<dl class="method">
+<dt id="benchmarkstt.normalization.FileFactory.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>name</em>, <em>file=None</em>, <em>encoding=None</em>, <em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#FileFactory.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.FileFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.normalization.FileFactory.get_class">
+<code class="descname">get_class</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#FileFactory.get_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.FileFactory.get_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the proper class based on a name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Case-insensitive name of the class</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The class</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">class</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.NormalizationComposite">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.</code><code class="descname">NormalizationComposite</code><span class="sig-paren">(</span><em>title=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#NormalizationComposite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.NormalizationComposite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>Combining normalizers</p>
+<dl class="method">
+<dt id="benchmarkstt.normalization.NormalizationComposite.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>normalizer</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization.html#NormalizationComposite.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.NormalizationComposite.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a normalizer to the composite “stack”</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.normalization.api.html" class="btn btn-neutral float-right" title="benchmarkstt.normalization.api module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.metrics.core.html" class="btn btn-neutral" title="benchmarkstt.metrics.core module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

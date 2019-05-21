@@ -1,0 +1,7 @@
+benchmarkstt.diff.formatter module
+==================================
+
+.. automodule:: benchmarkstt.diff.formatter
+    :members:
+    :undoc-members:
+    :show-inheritance:

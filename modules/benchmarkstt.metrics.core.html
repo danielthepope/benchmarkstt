@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.metrics.core module &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.normalization package" href="benchmarkstt.normalization.html" />
+    <link rel="prev" title="benchmarkstt.metrics.cli module" href="benchmarkstt.metrics.cli.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.diff.html">benchmarkstt.diff package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="benchmarkstt.metrics.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="benchmarkstt.metrics.html#module-benchmarkstt.metrics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a> &raquo;</li>
+        
+      <li>benchmarkstt.metrics.core module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.metrics.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-benchmarkstt.metrics.core">
+<span id="benchmarkstt-metrics-core-module"></span><h1>benchmarkstt.metrics.core module<a class="headerlink" href="#module-benchmarkstt.metrics.core" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="benchmarkstt.metrics.core.DiffCounts">
+<em class="property">class </em><code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">DiffCounts</code><span class="sig-paren">(</span><em>differ_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#DiffCounts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.DiffCounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.metrics.html#benchmarkstt.metrics.Base" title="benchmarkstt.metrics.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.metrics.Base</span></code></a></p>
+<p>Get the amount of differences between reference and hypothesis</p>
+<dl class="method">
+<dt id="benchmarkstt.metrics.core.DiffCounts.compare">
+<code class="descname">compare</code><span class="sig-paren">(</span><em>ref: benchmarkstt.schema.Schema</em>, <em>hyp: benchmarkstt.schema.Schema</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#DiffCounts.compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.DiffCounts.compare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.metrics.core.OpcodeCounts">
+<em class="property">class </em><code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">OpcodeCounts</code><span class="sig-paren">(</span><em>equal</em>, <em>replace</em>, <em>insert</em>, <em>delete</em><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.metrics.core.OpcodeCounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.OpcodeCounts.delete">
+<code class="descname">delete</code><a class="headerlink" href="#benchmarkstt.metrics.core.OpcodeCounts.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.OpcodeCounts.equal">
+<code class="descname">equal</code><a class="headerlink" href="#benchmarkstt.metrics.core.OpcodeCounts.equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.OpcodeCounts.insert">
+<code class="descname">insert</code><a class="headerlink" href="#benchmarkstt.metrics.core.OpcodeCounts.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.OpcodeCounts.replace">
+<code class="descname">replace</code><a class="headerlink" href="#benchmarkstt.metrics.core.OpcodeCounts.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.metrics.core.WER">
+<em class="property">class </em><code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">WER</code><span class="sig-paren">(</span><em>mode=None</em>, <em>differ_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#WER"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.WER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.metrics.html#benchmarkstt.metrics.Base" title="benchmarkstt.metrics.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.metrics.Base</span></code></a></p>
+<p>Word Error Rate, basically defined as:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>insertions + deletions + substitions
+------------------------------------
+     number of reference words
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://en.wikipedia.org/wiki/Word_error_rate">https://en.wikipedia.org/wiki/Word_error_rate</a></p>
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.WER.DEL_PENALTY">
+<code class="descname">DEL_PENALTY</code><em class="property"> = 1</em><a class="headerlink" href="#benchmarkstt.metrics.core.WER.DEL_PENALTY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.WER.INS_PENALTY">
+<code class="descname">INS_PENALTY</code><em class="property"> = 1</em><a class="headerlink" href="#benchmarkstt.metrics.core.WER.INS_PENALTY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.WER.MODE_HUNT">
+<code class="descname">MODE_HUNT</code><em class="property"> = 1</em><a class="headerlink" href="#benchmarkstt.metrics.core.WER.MODE_HUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.WER.MODE_STRICT">
+<code class="descname">MODE_STRICT</code><em class="property"> = 0</em><a class="headerlink" href="#benchmarkstt.metrics.core.WER.MODE_STRICT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.metrics.core.WER.SUB_PENALTY">
+<code class="descname">SUB_PENALTY</code><em class="property"> = 1</em><a class="headerlink" href="#benchmarkstt.metrics.core.WER.SUB_PENALTY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.metrics.core.WER.compare">
+<code class="descname">compare</code><span class="sig-paren">(</span><em>ref: benchmarkstt.schema.Schema</em>, <em>hyp: benchmarkstt.schema.Schema</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#WER.compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.WER.compare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.metrics.core.WordDiffs">
+<em class="property">class </em><code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">WordDiffs</code><span class="sig-paren">(</span><em>dialect=None</em>, <em>differ_class=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#WordDiffs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.WordDiffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.metrics.html#benchmarkstt.metrics.Base" title="benchmarkstt.metrics.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.metrics.Base</span></code></a></p>
+<p>Calculate the differences on a per-word basis</p>
+<dl class="method">
+<dt id="benchmarkstt.metrics.core.WordDiffs.compare">
+<code class="descname">compare</code><span class="sig-paren">(</span><em>ref: benchmarkstt.schema.Schema</em>, <em>hyp: benchmarkstt.schema.Schema</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#WordDiffs.compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.WordDiffs.compare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="benchmarkstt.metrics.core.get_differ">
+<code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">get_differ</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>differ_class</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#get_differ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.get_differ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="benchmarkstt.metrics.core.get_opcode_counts">
+<code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">get_opcode_counts</code><span class="sig-paren">(</span><em>opcodes</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#get_opcode_counts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.get_opcode_counts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="benchmarkstt.metrics.core.traversible">
+<code class="descclassname">benchmarkstt.metrics.core.</code><code class="descname">traversible</code><span class="sig-paren">(</span><em>schema</em>, <em>key=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/metrics/core.html#traversible"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.metrics.core.traversible" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.normalization.html" class="btn btn-neutral float-right" title="benchmarkstt.normalization package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.metrics.cli.html" class="btn btn-neutral" title="benchmarkstt.metrics.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

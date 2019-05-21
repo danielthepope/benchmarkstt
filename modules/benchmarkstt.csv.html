@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.csv module &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.decorators module" href="benchmarkstt.decorators.html" />
+    <link rel="prev" title="benchmarkstt.config module" href="benchmarkstt.config.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.cli.html">benchmarkstt.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.config.html">benchmarkstt.config module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">benchmarkstt.csv module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.decorators.html">benchmarkstt.decorators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.docblock.html">benchmarkstt.docblock module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.factory.html">benchmarkstt.factory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.modules.html">benchmarkstt.modules module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.schema.html">benchmarkstt.schema module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+      <li>benchmarkstt.csv module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.csv.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-benchmarkstt.csv">
+<span id="benchmarkstt-csv-module"></span><h1>benchmarkstt.csv module<a class="headerlink" href="#module-benchmarkstt.csv" title="Permalink to this headline">¶</a></h1>
+<p>Module providing our own CSV file parser with support for whitespace trimming, empty lines filtering and comment lines</p>
+<dl class="exception">
+<dt id="benchmarkstt.csv.CSVParserError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">CSVParserError</code><span class="sig-paren">(</span><em>message</em>, <em>line</em>, <em>char</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/csv.html#CSVParserError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.CSVParserError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>Some error occured while attempting to parse the file</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.csv.DefaultDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">DefaultDialect</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#DefaultDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.csv.Dialect" title="benchmarkstt.csv.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.csv.Dialect</span></code></a></p>
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.commentchar">
+<code class="descname">commentchar</code><em class="property"> = '#'</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.commentchar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.delimiter">
+<code class="descname">delimiter</code><em class="property"> = ','</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.ignoreemptylines">
+<code class="descname">ignoreemptylines</code><em class="property"> = True</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.ignoreemptylines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.quotechar">
+<code class="descname">quotechar</code><em class="property"> = '&quot;'</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.quotechar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.trimleft">
+<code class="descname">trimleft</code><em class="property"> = ' \t\n\r'</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.trimleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.DefaultDialect.trimright">
+<code class="descname">trimright</code><em class="property"> = ' \t\n\r'</em><a class="headerlink" href="#benchmarkstt.csv.DefaultDialect.trimright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.csv.Dialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">Dialect</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#Dialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.Dialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Dialect.commentchar">
+<code class="descname">commentchar</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.csv.Dialect.commentchar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Dialect.delimiter">
+<code class="descname">delimiter</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.csv.Dialect.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Dialect.quotechar">
+<code class="descname">quotechar</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.csv.Dialect.quotechar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Dialect.trimleft">
+<code class="descname">trimleft</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.csv.Dialect.trimleft" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Dialect.trimright">
+<code class="descname">trimright</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.csv.Dialect.trimright" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.csv.InvalidDialectError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">InvalidDialectError</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#InvalidDialectError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.InvalidDialectError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>An invalid dialect was supplied</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.csv.Line">
+<em class="property">class </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">Line</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#Line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.Line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<dl class="attribute">
+<dt id="benchmarkstt.csv.Line.lineno">
+<code class="descname">lineno</code><a class="headerlink" href="#benchmarkstt.csv.Line.lineno" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.csv.Reader">
+<em class="property">class </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">Reader</code><span class="sig-paren">(</span><em>file: TextIO</em>, <em>dialect: benchmarkstt.csv.Dialect</em>, <em>debug=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/csv.html#Reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>CSV-like file reader with support for comment chars, ignoring empty lines
+and whitespace trimming on both sides of each field.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.csv.UnallowedQuoteError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">UnallowedQuoteError</code><span class="sig-paren">(</span><em>message</em>, <em>line</em>, <em>char</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/csv.html#UnallowedQuoteError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.UnallowedQuoteError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.csv.CSVParserError" title="benchmarkstt.csv.CSVParserError"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.csv.CSVParserError</span></code></a></p>
+<p>A quote is not allowed there</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.csv.UnclosedQuoteError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">UnclosedQuoteError</code><span class="sig-paren">(</span><em>message</em>, <em>line</em>, <em>char</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/csv.html#UnclosedQuoteError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.UnclosedQuoteError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.csv.CSVParserError" title="benchmarkstt.csv.CSVParserError"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.csv.CSVParserError</span></code></a></p>
+<p>A quote wasn’t properly closed</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="benchmarkstt.csv.UnknownDialectError">
+<em class="property">exception </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">UnknownDialectError</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#UnknownDialectError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.UnknownDialectError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>An unknown dialect was requested</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.csv.WhitespaceDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.csv.</code><code class="descname">WhitespaceDialect</code><a class="reference internal" href="../_modules/benchmarkstt/csv.html#WhitespaceDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.WhitespaceDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.csv.DefaultDialect" title="benchmarkstt.csv.DefaultDialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.csv.DefaultDialect</span></code></a></p>
+<dl class="attribute">
+<dt id="benchmarkstt.csv.WhitespaceDialect.delimiter">
+<code class="descname">delimiter</code><em class="property"> = ' \t'</em><a class="headerlink" href="#benchmarkstt.csv.WhitespaceDialect.delimiter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="benchmarkstt.csv.reader">
+<code class="descclassname">benchmarkstt.csv.</code><code class="descname">reader</code><span class="sig-paren">(</span><em>file: TextIO</em>, <em>dialect: Union[None</em>, <em>str</em>, <em>benchmarkstt.csv.Dialect] = None</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; benchmarkstt.csv.Reader<a class="reference internal" href="../_modules/benchmarkstt/csv.html#reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.csv.reader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.decorators.html" class="btn btn-neutral float-right" title="benchmarkstt.decorators module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.config.html" class="btn btn-neutral" title="benchmarkstt.config module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

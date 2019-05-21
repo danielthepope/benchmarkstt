@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.normalization.core module &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.normalization.logger module" href="benchmarkstt.normalization.logger.html" />
+    <link rel="prev" title="benchmarkstt.normalization.cli module" href="benchmarkstt.normalization.cli.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.diff.html">benchmarkstt.diff package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="benchmarkstt.normalization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="benchmarkstt.normalization.html#module-benchmarkstt.normalization">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a> &raquo;</li>
+        
+      <li>benchmarkstt.normalization.core module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.normalization.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-benchmarkstt.normalization.core">
+<span id="benchmarkstt-normalization-core-module"></span><h1>benchmarkstt.normalization.core module<a class="headerlink" href="#module-benchmarkstt.normalization.core" title="Permalink to this headline">¶</a></h1>
+<p>Some basic/simple normalization classes</p>
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.Config">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">Config</code><span class="sig-paren">(</span><em>file</em>, <em>section=None</em>, <em>encoding=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>Use config file notation to define normalization rules. This notation is a
+list of normalizers, one per line.</p>
+<p>Each normalizer that is based needs a file is followed by a file name of a
+csv, and can be optionally followed by the file encoding (if different than
+default).
+All options are loaded in from this csv and applied to the normalizer.</p>
+<p>The normalizers can be any of the core normalizers, or you can refer to your
+own normalizer class (like you would use in a python import, eg.
+<cite>my.own.package.MyNormalizerClass</cite>).</p>
+<dl class="docutils">
+<dt>Additional rules:</dt>
+<dd><ul class="first last simple">
+<li>Normalizer names are case-insensitive.</li>
+<li>Arguments MAY be wrapped in double quotes.</li>
+<li>If an argument contains a space, newline or double quote, it MUST be
+wrapped in double quotes.</li>
+<li>A double quote itself is represented in this quoted argument as two
+double quotes: <cite>“”</cite>.</li>
+</ul>
+</dd>
+</dl>
+<p>The normalization rules are applied top-to-bottom and follow this format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># This is a comment
+
+# (Normalizer2 has no arguments)
+lowercase
+
+# loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding
+regex regexrules.csv &quot;utf 8&quot;
+
+# load another config file, [section1] and [section2]
+config configfile.ini section1
+config configfile.ini section2
+
+# loads replace expressions from replaces.csv in default encoding
+replace     replaces.csv
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file</strong> – The config file</li>
+<li><strong>encoding</strong> – The file encoding</li>
+<li><strong>section</strong> – The subsection of the config file to use (if applicable)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example text:</th><td class="field-body"><p class="first">“He bravely turned his tail and fled”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example file:</th><td class="field-body"><p class="first">“./resources/test/normalizers/configfile.conf”</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Example encoding:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">“UTF-8”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example return:</th><td class="field-body"><p class="first last">“ha bravalY Turnad his tail and flad”</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="benchmarkstt.normalization.core.Config.default_section">
+<code class="descname">default_section</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.normalization.core.Config.default_section" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.Lowercase">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">Lowercase</code><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Lowercase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Lowercase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>Lowercase the text</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example text:</th><td class="field-body">“Easy, Mungo, easy… Mungo…”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example return:</th><td class="field-body">“easy, mungo, easy… mungo…”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.Regex">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">Regex</code><span class="sig-paren">(</span><em>search: str</em>, <em>replace: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Regex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.BaseWithFileSupport" title="benchmarkstt.normalization.BaseWithFileSupport"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.BaseWithFileSupport</span></code></a></p>
+<p>Simple regex replace. By default the pattern is interpreted
+case-sensitive.</p>
+<p>Case-insensitivity is supported by adding inline modifiers.</p>
+<p>You might want to use capturing groups to preserve the case. When replacing
+a character not captured, the information about its case is lost…</p>
+<p>Eg. would replace “HAHA! Hahaha!” to “HeHe! Hehehe!”:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">search</th>
+<th class="head">replace</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">(?i)(h)a</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">\1e</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>No regex flags are set by default, you can set them yourself though in the
+regex, and combine them at will, eg. multiline, dotall and ignorecase.</p>
+<p>Eg. would replace “New&lt;CRLF&gt;line” to “newline”:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">search</th>
+<th class="head">replace</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">(?msi)new.line</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">newline</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example text:</th><td class="field-body">“HAHA! Hahaha!”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example search:</th><td class="field-body">‘(?i)(h)a’</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Example replace:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">r‘1e’</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example return:</th><td class="field-body">“HeHe! Hehehe!”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.Replace">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">Replace</code><span class="sig-paren">(</span><em>search: str</em>, <em>replace: str = ''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.BaseWithFileSupport" title="benchmarkstt.normalization.BaseWithFileSupport"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.BaseWithFileSupport</span></code></a></p>
+<p>Simple search replace</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>search</strong> (<em>str</em>) – Text to search for</li>
+<li><strong>replace</strong> (<em>str</em>) – Text to replace with</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example text:</th><td class="field-body"><p class="first">“Nudge nudge!”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example search:</th><td class="field-body"><p class="first">“nudge”</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Example replace:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">“wink”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example return:</th><td class="field-body"><p class="first last">“Nudge wink!”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.ReplaceWords">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">ReplaceWords</code><span class="sig-paren">(</span><em>search: str</em>, <em>replace: str</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#ReplaceWords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.ReplaceWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.BaseWithFileSupport" title="benchmarkstt.normalization.BaseWithFileSupport"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.BaseWithFileSupport</span></code></a></p>
+<p>Simple search replace that only replaces “words”, the first letter will be
+checked case insensitive as well with preservation of case..</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>search</strong> (<em>str</em>) – Word to search for</li>
+<li><strong>replace</strong> (<em>str</em>) – Replace with</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example text:</th><td class="field-body"><p class="first">“She has a heart of formica”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example search:</th><td class="field-body"><p class="first">“a”</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Example replace:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">“the”</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example return:</th><td class="field-body"><p class="first last">“She has the heart of formica”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.normalization.core.Unidecode">
+<em class="property">class </em><code class="descclassname">benchmarkstt.normalization.core.</code><code class="descname">Unidecode</code><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Unidecode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Unidecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="benchmarkstt.normalization.html#benchmarkstt.normalization.Base" title="benchmarkstt.normalization.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.normalization.Base</span></code></a></p>
+<p>Unidecode characters to ASCII form, see <a class="reference external" href="https://pypi.org/project/Unidecode">Python’s Unidecode package</a> for more info.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example text:</th><td class="field-body">“𝖂𝖊𝖓𝖓 𝖎𝖘𝖙 𝖉𝖆𝖘 𝕹𝖚𝖓𝖘𝖙ü𝖈𝖐 𝖌𝖎𝖙 𝖚𝖓𝖉 𝕾𝖑𝖔𝖙𝖊𝖗𝖒𝖊𝖞𝖊𝖗?”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example return:</th><td class="field-body">“Wenn ist das Nunstuck git und Slotermeyer?”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.normalization.logger.html" class="btn btn-neutral float-right" title="benchmarkstt.normalization.logger module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.normalization.cli.html" class="btn btn-neutral" title="benchmarkstt.normalization.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

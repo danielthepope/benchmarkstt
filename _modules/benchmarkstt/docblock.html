@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.docblock &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../benchmarkstt.html">benchmarkstt</a> &raquo;</li>
+        
+      <li>benchmarkstt.docblock</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for benchmarkstt.docblock</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">docutils.core</span> <span class="k">import</span> <span class="n">publish_string</span>
+<span class="kn">from</span> <span class="nn">docutils.writers</span> <span class="k">import</span> <span class="n">html5_polyglot</span>
+<span class="kn">import</span> <span class="nn">docutils</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">Docblock</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Docblock&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;docs&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="s1">&#39;result_type&#39;</span><span class="p">])</span>
+<span class="n">Param</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Param&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;type_doc&#39;</span><span class="p">,</span> <span class="s1">&#39;is_required&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;examples&#39;</span><span class="p">])</span>
+<span class="n">DocblockParam</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;DocblockParam&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">])</span>
+
+
+<div class="viewcode-block" id="format_docs"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.format_docs">[docs]</a><span class="k">def</span> <span class="nf">format_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="doc_param_parser"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.doc_param_parser">[docs]</a><span class="k">def</span> <span class="nf">doc_param_parser</span><span class="p">(</span><span class="n">docstring</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">no_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_multiple</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">replace_strat</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">no_name</span> <span class="ow">or</span> <span class="n">allow_multiple</span> <span class="k">else</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">replace_strat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">replace_strat</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">replace_strat</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">_replace_strat</span> <span class="o">=</span> <span class="n">replace_strat</span>
+
+        <span class="k">def</span> <span class="nf">replace_strat</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+            <span class="k">nonlocal</span> <span class="n">_replace_strat</span>
+            <span class="k">return</span> <span class="n">_replace_strat</span>
+
+    <span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">no_name</span><span class="p">,</span> <span class="n">replace_strat</span>
+        <span class="k">if</span> <span class="n">no_name</span><span class="p">:</span>
+            <span class="n">param</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="n">replace_strat</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DocblockParam</span><span class="p">(</span><span class="o">**</span><span class="n">param</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">param</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="n">replace_strat</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+            <span class="n">param</span> <span class="o">=</span> <span class="n">DocblockParam</span><span class="p">(</span><span class="o">**</span><span class="n">param</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">allow_multiple</span><span class="p">:</span>
+                <span class="c1"># check if it already exists, if not create a new object</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+                       <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">val</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+                    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({})</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">param</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">param</span>
+
+        <span class="k">return</span> <span class="n">return_val</span>
+
+    <span class="k">if</span> <span class="n">no_name</span><span class="p">:</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[ \t]*:</span><span class="si">%s</span><span class="s1">[ \t]*([a-z_]+)?:[ \t]+(.*)$&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[ \t]*:</span><span class="si">%s</span><span class="s1">[ \t]+(?:([^:]+)[ \t]+)?([a-z_]+):[ \t]*(.+$|(?:$[ \t]*\n)*([ \t]+)([^\n]*)$(?:\4.*\n|\n)+)&#39;</span>
+
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+        <span class="n">regex</span> <span class="o">%</span> <span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">key</span><span class="p">),),</span> <span class="n">_</span><span class="p">,</span> <span class="n">docstring</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">docs</span><span class="p">,</span> <span class="n">results</span></div>
+
+
+<div class="viewcode-block" id="decode_literal"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.decode_literal">[docs]</a><span class="k">def</span> <span class="nf">decode_literal</span><span class="p">(</span><span class="n">txt</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">txt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> &quot;</span><span class="si">%s</span><span class="s1">&quot; for: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">txt</span></div>
+
+
+<div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.parse">[docs]</a><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">format_docs</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+
+    <span class="n">argspec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">argspec</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="ow">and</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cls&#39;</span><span class="p">):</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">defaults_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">argspec</span><span class="o">.</span><span class="n">defaults</span><span class="p">)</span> <span class="k">if</span> <span class="n">argspec</span><span class="o">.</span><span class="n">defaults</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">docs</span><span class="p">,</span> <span class="n">doc_params</span> <span class="o">=</span> <span class="n">doc_param_parser</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">,</span> <span class="n">replace_strat</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">docs</span><span class="p">,</span> <span class="n">doc_result</span> <span class="o">=</span> <span class="n">doc_param_parser</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="s1">&#39;return&#39;</span><span class="p">,</span> <span class="n">no_name</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">decode_examples</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">param</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">decode_literal</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">param</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_rst</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">docs</span><span class="p">,</span> <span class="n">examples</span> <span class="o">=</span> <span class="n">doc_param_parser</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span> <span class="n">allow_multiple</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="n">replace_strat</span><span class="o">=</span><span class="n">decode_examples</span><span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">type_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">doc_params</span><span class="p">:</span>
+            <span class="n">type_</span> <span class="o">=</span> <span class="n">doc_params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">type</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">doc_params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="n">param</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                      <span class="n">argspec</span><span class="o">.</span><span class="n">annotations</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">argspec</span><span class="o">.</span><span class="n">annotations</span>
+                      <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">type_</span><span class="p">,</span>
+                      <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">defaults_idx</span><span class="p">,</span>
+                      <span class="n">description</span><span class="p">,</span>
+                      <span class="n">examples</span><span class="p">)</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+
+    <span class="c1"># quick hack to remove this</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">docs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:py:class:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Docblock</span><span class="p">(</span><span class="n">docs</span><span class="o">=</span><span class="n">docs</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                      <span class="n">result</span><span class="o">=</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">doc_result</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">result_type</span><span class="o">=</span><span class="n">doc_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="k">if</span> <span class="n">doc_result</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="HTML5Writer"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.HTML5Writer">[docs]</a><span class="k">class</span> <span class="nc">HTML5Writer</span><span class="p">(</span><span class="n">html5_polyglot</span><span class="o">.</span><span class="n">Writer</span><span class="p">):</span>
+<div class="viewcode-block" id="HTML5Writer.apply_template"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.HTML5Writer.apply_template">[docs]</a>    <span class="k">def</span> <span class="nf">apply_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">subs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolation_dict</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">subs</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="TextWriter"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter">[docs]</a><span class="k">class</span> <span class="nc">TextWriter</span><span class="p">(</span><span class="n">docutils</span><span class="o">.</span><span class="n">writers</span><span class="o">.</span><span class="n">Writer</span><span class="p">):</span>
+<div class="viewcode-block" id="TextWriter.TextVisitor"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter.TextVisitor">[docs]</a>    <span class="k">class</span> <span class="nc">TextVisitor</span><span class="p">(</span><span class="n">docutils</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">SparseNodeVisitor</span><span class="p">):</span>
+        <span class="n">_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<div class="viewcode-block" id="TextWriter.TextVisitor.visit_Text"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter.TextVisitor.visit_Text">[docs]</a>        <span class="k">def</span> <span class="nf">visit_Text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">+=</span> <span class="n">node</span><span class="o">.</span><span class="n">astext</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TextWriter.TextVisitor.visit_paragraph"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter.TextVisitor.visit_paragraph">[docs]</a>        <span class="k">def</span> <span class="nf">visit_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_text</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span></div>
+
+<div class="viewcode-block" id="TextWriter.TextVisitor.text"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter.TextVisitor.text">[docs]</a>        <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text</span></div></div>
+
+<div class="viewcode-block" id="TextWriter.translate"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.TextWriter.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">visitor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TextVisitor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">visitor</span><span class="o">.</span><span class="n">text</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="process_rst"><a class="viewcode-back" href="../../modules/benchmarkstt.docblock.html#benchmarkstt.docblock.process_rst">[docs]</a><span class="k">def</span> <span class="nf">process_rst</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">writer</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">writer</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">HTML5Writer</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">writer</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">TextWriter</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown writer </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;output_encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="s1">&#39;table_style&#39;</span><span class="p">:</span> <span class="s1">&#39;table&#39;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">publish_string</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">,</span> <span class="n">writer_name</span><span class="o">=</span><span class="s1">&#39;html5&#39;</span><span class="p">,</span>
+                          <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>benchmarkstt.diff.formatter module &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="benchmarkstt.input package" href="benchmarkstt.input.html" />
+    <link rel="prev" title="benchmarkstt.diff.core module" href="benchmarkstt.diff.core.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="benchmarkstt.html">benchmarkstt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="benchmarkstt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.api.html">benchmarkstt.api package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.benchmark.html">benchmarkstt.benchmark package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="benchmarkstt.diff.html">benchmarkstt.diff package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="benchmarkstt.diff.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="benchmarkstt.diff.html#module-benchmarkstt.diff">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.html#module-benchmarkstt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.html">benchmarkstt package</a> &raquo;</li>
+        
+          <li><a href="benchmarkstt.diff.html">benchmarkstt.diff package</a> &raquo;</li>
+        
+      <li>benchmarkstt.diff.formatter module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/benchmarkstt.diff.formatter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-benchmarkstt.diff.formatter">
+<span id="benchmarkstt-diff-formatter-module"></span><h1>benchmarkstt.diff.formatter module<a class="headerlink" href="#module-benchmarkstt.diff.formatter" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.CLIDiffDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">CLIDiffDialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#CLIDiffDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.Dialect" title="benchmarkstt.diff.formatter.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.Dialect</span></code></a></p>
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.CLIDiffDialect.delete_format">
+<code class="descname">delete_format</code><em class="property"> = '\x1b[31m%s\x1b[0m'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.delete_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.CLIDiffDialect.format">
+<em class="property">static </em><code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#CLIDiffDialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.CLIDiffDialect.insert_format">
+<code class="descname">insert_format</code><em class="property"> = '\x1b[32m%s\x1b[0m'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.CLIDiffDialect.preprocessor">
+<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return printable representation of ascii/utf-8 control characters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>char</strong> (<em>str</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return str:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.Dialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">Dialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#Dialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.delete_format">
+<code class="descname">delete_format</code><em class="property"> = '%s'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.delete_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.equal_format">
+<code class="descname">equal_format</code><em class="property"> = '%s'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.equal_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.Dialect.format">
+<em class="property">static </em><code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#Dialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.insert_format">
+<code class="descname">insert_format</code><em class="property"> = '%s'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.preprocessor">
+<code class="descname">preprocessor</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.replace_format">
+<code class="descname">replace_format</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.replace_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.DiffFormatter">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">DiffFormatter</code><span class="sig-paren">(</span><em>dialect=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#DiffFormatter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.DiffFormatter.diff">
+<code class="descname">diff</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>opcodes=None</em>, <em>preprocessor=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#DiffFormatter.diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.DiffFormatter.diff_dialects">
+<code class="descname">diff_dialects</code><em class="property"> = {'cli': &lt;class 'benchmarkstt.diff.formatter.CLIDiffDialect'&gt;, 'html': &lt;class 'benchmarkstt.diff.formatter.HTMLDiffDialect'&gt;, 'text': &lt;class 'benchmarkstt.diff.formatter.UTF8Dialect'&gt;}</em><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.diff_dialects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.DiffFormatter.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#DiffFormatter.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.HTMLDiffDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">HTMLDiffDialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#HTMLDiffDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.Dialect" title="benchmarkstt.diff.formatter.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.Dialect</span></code></a></p>
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.HTMLDiffDialect.delete_format">
+<code class="descname">delete_format</code><em class="property"> = '&lt;span class=&quot;delete&quot;&gt;%s&lt;/span&gt;'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.delete_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.HTMLDiffDialect.format">
+<em class="property">static </em><code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#HTMLDiffDialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.HTMLDiffDialect.insert_format">
+<code class="descname">insert_format</code><em class="property"> = '&lt;span class=&quot;insert&quot;&gt;%s&lt;/span&gt;'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.HTMLDiffDialect.preprocessor">
+<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>escape(s) -&gt; markup</p>
+<p>Convert the characters &amp;, &lt;, &gt;, ‘, and ” in string s to HTML-safe
+sequences.  Use this if you need to display text that might contain
+such characters in HTML.  Marks return value as markup string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">UTF8Dialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.Dialect" title="benchmarkstt.diff.formatter.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.Dialect</span></code></a></p>
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.delete_format">
+<em class="property">static </em><code class="descname">delete_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.delete_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.delete_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.format">
+<em class="property">static </em><code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.insert_format">
+<em class="property">static </em><code class="descname">insert_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.insert_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.preprocessor">
+<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return printable representation of ascii/utf-8 control characters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>char</strong> (<em>str</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return str:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="benchmarkstt.diff.formatter.format_diff">
+<code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">format_diff</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>opcodes=None</em>, <em>dialect=None</em>, <em>preprocessor=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#format_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.format_diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="benchmarkstt.input.html" class="btn btn-neutral float-right" title="benchmarkstt.input package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="benchmarkstt.diff.core.html" class="btn btn-neutral" title="benchmarkstt.diff.core module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

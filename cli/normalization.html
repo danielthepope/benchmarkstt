@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Subcommand normalization &mdash; BenchmarkSTT 0.0a3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Subcommand metrics" href="metrics.html" />
+    <link rel="prev" title="Subcommand api" href="api.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> BenchmarkSTT
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0a3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../cli.html">Command line tool</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../cli.html#additional-tools">Additional tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="api.html">Subcommand api</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Subcommand normalization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="metrics.html">Subcommand metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cli.html#bash-completion">Bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docker.html">Using docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/benchmarkstt.html">benchmarkstt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BenchmarkSTT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../usage.html">Usage</a> &raquo;</li>
+        
+          <li><a href="../cli.html">Command line tool</a> &raquo;</li>
+        
+      <li>Subcommand normalization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cli/normalization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="subcommand-normalization">
+<h1>Subcommand normalization<a class="headerlink" href="#subcommand-normalization" title="Permalink to this headline">¶</a></h1>
+<p>Apply normalization to given input</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">benchmarkstt</span><span class="o">-</span><span class="n">tools</span> <span class="n">normalization</span> <span class="p">[</span><span class="o">--</span><span class="n">log</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">file</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">file</span><span class="p">]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">config</span> <span class="n">file</span> <span class="p">[</span><span class="n">section</span><span class="p">]</span> <span class="p">[</span><span class="n">encoding</span><span class="p">]]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">lowercase</span><span class="p">]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">regex</span> <span class="n">search</span> <span class="p">[</span><span class="n">replace</span><span class="p">]]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">replace</span> <span class="n">search</span> <span class="p">[</span><span class="n">replace</span><span class="p">]]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">replacewords</span> <span class="n">search</span> <span class="n">replace</span><span class="p">]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">unidecode</span><span class="p">]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">level</span> <span class="p">{</span><span class="n">critical</span><span class="p">,</span><span class="n">fatal</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">warn</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">debug</span><span class="p">,</span><span class="n">notset</span><span class="p">}]</span>
+                                        <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h2>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h2>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>--log</kbd></td>
+<td><p class="first">show normalizer logs (warning: for large files with many normalization rules this will cause a significant performance penalty and a lot of output data)</p>
+<p class="last">Default: False</p>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--log-level</kbd></td>
+<td><p class="first">Possible choices: critical, fatal, error, warn, warning, info, debug, notset</p>
+<p>set the logging output level</p>
+<p class="last">Default: warning</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="input and output files">
+<h2>input and output files<a class="headerlink" href="#input and output files" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>You can provide multiple input and output files, each preceded by -i and -o
+respectively.
+If no input file is given, only one output file can be used.
+If using both multiple input and output files there should be an equal amount
+of each. Each processed input file will then be written to the corresponding
+output file.</div></blockquote>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd>-i, --inputfile</kbd></td>
+</tr>
+<tr><td>&#160;</td><td>read input from this file, defaults to STDIN</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd>-o, --outputfile</kbd></td>
+</tr>
+<tr><td>&#160;</td><td>write output to this file, defaults to STDOUT</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="available normalizers">
+<h2>available normalizers<a class="headerlink" href="#available normalizers" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>A list of normalizers to execute on the input, can be one or more normalizers
+which are applied sequentially.
+The program will automatically find the normalizer in benchmarkstt.normalization.core,
+then benchmarkstt.normalization and finally in the global namespace.</div></blockquote>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd>--config</kbd></td>
+<td><p class="first">Use config file notation to define normalization rules. This notation is a
+list of normalizers, one per line.</p>
+<p>Each normalizer that is based needs a file is followed by a file name of a
+csv, and can be optionally followed by the file encoding (if different than
+default).
+All options are loaded in from this csv and applied to the normalizer.</p>
+<p>The normalizers can be any of the core normalizers, or you can refer to your
+own normalizer class (like you would use in a python import, eg.
+<cite>my.own.package.MyNormalizerClass</cite>).</p>
+<dl class="docutils">
+<dt>Additional rules:</dt>
+<dd><ul class="first last simple">
+<li>Normalizer names are case-insensitive.</li>
+<li>Arguments MAY be wrapped in double quotes.</li>
+<li>If an argument contains a space, newline or double quote, it MUST be
+wrapped in double quotes.</li>
+<li>A double quote itself is represented in this quoted argument as two
+double quotes: <cite>“”</cite>.</li>
+</ul>
+</dd>
+</dl>
+<p>The normalization rules are applied top-to-bottom and follow this format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># This is a comment
+
+# (Normalizer2 has no arguments)
+lowercase
+
+# loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding
+regex regexrules.csv &quot;utf 8&quot;
+
+# load another config file, [section1] and [section2]
+config configfile.ini section1
+config configfile.ini section2
+
+# loads replace expressions from replaces.csv in default encoding
+replace     replaces.csv
+</pre></div>
+</div>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param file:</th><td class="field-body">The config file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param encoding:</th><td class="field-body">The file encoding</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param section:</th><td class="field-body">The subsection of the config file to use (if applicable)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example text:</th><td class="field-body">“He bravely turned his tail and fled”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example file:</th><td class="field-body">“./resources/test/normalizers/configfile.conf”</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">example encoding:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">“UTF-8”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example return:</th><td class="field-body">“ha bravalY Turnad his tail and flad”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--lowercase</kbd></td>
+<td><p class="first">Lowercase the text</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">example text:</th><td class="field-body">“Easy, Mungo, easy… Mungo…”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example return:</th><td class="field-body">“easy, mungo, easy… mungo…”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--regex</kbd></td>
+<td><p class="first">Simple regex replace. By default the pattern is interpreted
+case-sensitive.</p>
+<p>Case-insensitivity is supported by adding inline modifiers.</p>
+<p>You might want to use capturing groups to preserve the case. When replacing
+a character not captured, the information about its case is lost…</p>
+<p>Eg. would replace “HAHA! Hahaha!” to “HeHe! Hehehe!”:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="58%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">search</th>
+<th class="head">replace</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">(?i)(h)a</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">\1e</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>No regex flags are set by default, you can set them yourself though in the
+regex, and combine them at will, eg. multiline, dotall and ignorecase.</p>
+<p>Eg. would replace “New&lt;CRLF&gt;line” to “newline”:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">search</th>
+<th class="head">replace</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="code docutils literal notranslate"><span class="pre">(?msi)new.line</span></code></td>
+<td><code class="code docutils literal notranslate"><span class="pre">newline</span></code></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">example text:</th><td class="field-body">“HAHA! Hahaha!”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example search:</th><td class="field-body">‘(?i)(h)a’</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">example replace:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">r‘1e’</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example return:</th><td class="field-body">“HeHe! Hehehe!”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--replace</kbd></td>
+<td><p class="first">Simple search replace</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param str search:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Text to search for</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param str replace:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Text to replace with</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example text:</th><td class="field-body">“Nudge nudge!”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example search:</th><td class="field-body">“nudge”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">example replace:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">“wink”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example return:</th><td class="field-body">“Nudge wink!”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--replacewords</kbd></td>
+<td><p class="first">Simple search replace that only replaces “words”, the first letter will be
+checked case insensitive as well with preservation of case..</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param str search:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Word to search for</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param str replace:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Replace with</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example text:</th><td class="field-body">“She has a heart of formica”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example search:</th><td class="field-body">“a”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">example replace:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">“the”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example return:</th><td class="field-body">“She has the heart of formica”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td class="option-group">
+<kbd>--unidecode</kbd></td>
+<td><p class="first">Unidecode characters to ASCII form, see <a class="reference external" href="https://pypi.org/project/Unidecode">Python’s Unidecode package</a> for more info.</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">example text:</th><td class="field-body">“𝖂𝖊𝖓𝖓 𝖎𝖘𝖙 𝖉𝖆𝖘 𝕹𝖚𝖓𝖘𝖙ü𝖈𝖐 𝖌𝖎𝖙 𝖚𝖓𝖉 𝕾𝖑𝖔𝖙𝖊𝖗𝖒𝖊𝖞𝖊𝖗?”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example return:</th><td class="field-body">“Wenn ist das Nunstuck git und Slotermeyer?”</td>
+</tr>
+</tbody>
+</table>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="metrics.html" class="btn btn-neutral float-right" title="Subcommand metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="Subcommand api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EBU
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+benchmarkstt.benchmark package
+==============================
+
+Submodules
+----------
+
+.. toctree::
+
+   benchmarkstt.benchmark.cli
+
+Module contents
+---------------
+
+.. automodule:: benchmarkstt.benchmark
+    :members:
+    :undoc-members:
+    :show-inheritance:

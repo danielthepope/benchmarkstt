@@ -1,0 +1,7 @@
+benchmarkstt.normalization.api module
+=====================================
+
+.. automodule:: benchmarkstt.normalization.api
+    :members:
+    :undoc-members:
+    :show-inheritance:
