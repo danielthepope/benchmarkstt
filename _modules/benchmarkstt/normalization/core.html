@@ -297,6 +297,12 @@
         <span class="k">return</span> <span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="ConfigSectionNotFoundError"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.ConfigSectionNotFoundError">[docs]</a><span class="k">class</span> <span class="nc">ConfigSectionNotFoundError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Raised when a requested config section was not found</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
 <div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Use config file notation to define normalization rules. This notation is a</span>
@@ -366,10 +372,13 @@
                 <span class="n">reader</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;rawinput&#39;</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             <span class="n">reader</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ConfigSectionNotFoundError</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+
             <span class="n">reader</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="n">section</span><span class="p">]</span>
             <span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,)</span>
 

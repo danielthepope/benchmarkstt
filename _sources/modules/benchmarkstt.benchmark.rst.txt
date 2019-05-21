@@ -6,6 +6,7 @@ Submodules
 
 .. toctree::
 
+   benchmarkstt.benchmark.api
    benchmarkstt.benchmark.cli
 
 Module contents

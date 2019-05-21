@@ -173,6 +173,10 @@
         <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">logs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span>
+
 <div class="viewcode-block" id="ListHandler.flush"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.logger.html#benchmarkstt.normalization.ListHandler.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -207,6 +211,26 @@
         <span class="n">normalize_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
     <span class="k">return</span> <span class="n">_</span></div>
+
+
+<div class="viewcode-block" id="LogCapturer"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.logger.html#benchmarkstt.normalization.LogCapturer">[docs]</a><span class="k">class</span> <span class="nc">LogCapturer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dialect</span> <span class="o">=</span> <span class="n">dialect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">ListHandler</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">DiffLoggingFormatter</span><span class="p">(</span><span class="n">dialect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dialect</span><span class="p">))</span>
+        <span class="n">normalize_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">logs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="n">log_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">log_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">log_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">logs</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="n">normalize_logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="kc">None</span></div>
 </pre></div>
 
            </div>

@@ -405,11 +405,6 @@
                     <span class="n">next_field</span><span class="p">()</span>
                     <span class="k">continue</span>
 
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_comment</span><span class="p">(</span><span class="n">char</span><span class="p">):</span>
-                    <span class="k">yield</span> <span class="n">yield_line</span><span class="p">()</span>
-                    <span class="n">mode</span> <span class="o">=</span> <span class="n">MODE_COMMENT</span>
-                    <span class="k">continue</span>
-
                 <span class="n">field</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
                 <span class="k">continue</span>
 

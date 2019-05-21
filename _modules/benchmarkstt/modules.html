@@ -155,7 +155,7 @@
 <span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">import_module</span>
 
-<span class="n">_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normalization&#39;</span><span class="p">,</span> <span class="s1">&#39;metrics&#39;</span><span class="p">]</span>
+<span class="n">_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normalization&#39;</span><span class="p">,</span> <span class="s1">&#39;metrics&#39;</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">]</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
     <span class="n">_modules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">)</span>
@@ -178,7 +178,11 @@
     <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;benchmarkstt.</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postfix</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">hidden</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">module</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Module not found&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 

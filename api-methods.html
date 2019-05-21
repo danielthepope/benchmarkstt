@@ -261,7 +261,7 @@ replace     replaces.csv
 <tr class="field-even field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -280,7 +280,7 @@ replace     replaces.csv
 <tr class="field-odd field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -348,7 +348,7 @@ regex, and combine them at will, eg. multiline, dotall and ignorecase.</p>
 <tr class="field-odd field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -378,7 +378,7 @@ regex, and combine them at will, eg. multiline, dotall and ignorecase.</p>
 <tr class="field-odd field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -409,7 +409,7 @@ checked case insensitive as well with preservation of case..</p>
 <tr class="field-odd field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -428,7 +428,7 @@ checked case insensitive as well with preservation of case..</p>
 <tr class="field-odd field"><th class="field-name">param str text:</th><td class="field-body">The text to normalize</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalizer logs</td>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Return normalization logs</td>
 </tr>
 </tbody>
 </table>
@@ -486,9 +486,151 @@ checked case insensitive as well with preservation of case..</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param ref:</th><td class="field-body">Reference text</td>
+<tr class="field-odd field"><th class="field-name" colspan="2">example dialect:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">‘html’</td>
 </tr>
-<tr class="field-even field"><th class="field-name">param hyp:</th><td class="field-body">Hypothesis text</td>
+<tr class="field-even field"><th class="field-name">param ref:</th><td class="field-body">Reference text</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param hyp:</th><td class="field-body">Hypothesis text</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="list-benchmark">
+<h2>list.benchmark<a class="headerlink" href="#list-benchmark" title="Permalink to this headline">¶</a></h2>
+<p>Get a list of available core benchmark</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">return object:</th><td class="field-body">With key being the benchmark name, and value its description</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="benchmark-diffcounts">
+<h2>benchmark.diffcounts<a class="headerlink" href="#benchmark-diffcounts" title="Permalink to this headline">¶</a></h2>
+<p>Get the amount of differences between reference and hypothesis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ref:</th><td class="field-body"><p class="first">Reference text</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param hyp:</th><td class="field-body"><p class="first">Hypothesis text</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param config:</th><td class="field-body"><p class="first">The config to use</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">Return normalization logs</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example ref:</th><td class="field-body"><p class="first">‘Hello darkness my OLD friend’</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example hyp:</th><td class="field-body"><p class="first">‘Hello darkness my old foe’</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example config:</th><td class="field-body"><div class="first highlight-text notranslate"><div class="highlight"><pre><span></span>[normalization]
+# using a simple config file
+Lowercase
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example result:</th><td class="field-body"><p class="first last">“”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="benchmark-wer">
+<h2>benchmark.wer<a class="headerlink" href="#benchmark-wer" title="Permalink to this headline">¶</a></h2>
+<p>Word Error Rate, basically defined as:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>insertions + deletions + substitions
+------------------------------------
+     number of reference words
+</pre></div>
+</div>
+<p>See: <a class="reference external" href="https://en.wikipedia.org/wiki/Word_error_rate">https://en.wikipedia.org/wiki/Word_error_rate</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param ref:</th><td class="field-body"><p class="first">Reference text</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param hyp:</th><td class="field-body"><p class="first">Hypothesis text</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param config:</th><td class="field-body"><p class="first">The config to use</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">Return normalization logs</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example ref:</th><td class="field-body"><p class="first">‘Hello darkness my OLD friend’</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example hyp:</th><td class="field-body"><p class="first">‘Hello darkness my old foe’</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example config:</th><td class="field-body"><div class="first highlight-text notranslate"><div class="highlight"><pre><span></span>[normalization]
+# using a simple config file
+Lowercase
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example result:</th><td class="field-body"><p class="first last">“”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="benchmark-worddiffs">
+<h2>benchmark.worddiffs<a class="headerlink" href="#benchmark-worddiffs" title="Permalink to this headline">¶</a></h2>
+<p>Calculate the differences on a per-word basis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">example dialect:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">‘html’</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param ref:</th><td class="field-body"><p class="first">Reference text</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">param hyp:</th><td class="field-body"><p class="first">Hypothesis text</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param config:</th><td class="field-body"><p class="first">The config to use</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param bool return_logs:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">Return normalization logs</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example ref:</th><td class="field-body"><p class="first">‘Hello darkness my OLD friend’</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example hyp:</th><td class="field-body"><p class="first">‘Hello darkness my old foe’</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">example config:</th><td class="field-body"><div class="first highlight-text notranslate"><div class="highlight"><pre><span></span>[normalization]
+# using a simple config file
+Lowercase
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example result:</th><td class="field-body"><p class="first last">“”</p>
+</td>
 </tr>
 </tbody>
 </table>

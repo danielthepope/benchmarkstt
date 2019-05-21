@@ -75,7 +75,7 @@ The normalization rules are applied top-to-bottom and follow this format:
 :example return: "ha bravalY Turnad his tail and flad"
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 normalization.lowercase
 -----------------------
@@ -87,7 +87,7 @@ Lowercase the text
 :example return: "easy, mungo, easy... mungo..."
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 normalization.regex
 -------------------
@@ -126,7 +126,7 @@ Eg. would replace "New<CRLF>line" to "newline":
 :example return: "HeHe! Hehehe!"
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 normalization.replace
 ---------------------
@@ -142,7 +142,7 @@ Simple search replace
 :example return: "Nudge wink!"
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 normalization.replacewords
 --------------------------
@@ -159,7 +159,7 @@ checked case insensitive as well with preservation of case..
 :example return: "She has the heart of formica"
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 normalization.unidecode
 -----------------------
@@ -171,7 +171,7 @@ Unidecode characters to ASCII form, see `Python's Unidecode package
 :example return: "Wenn ist das Nunstuck git und Slotermeyer?"
 
 :param str text: The text to normalize
-:param bool return_logs: Return normalizer logs
+:param bool return_logs: Return normalization logs
 
 list.metrics
 ------------
@@ -209,8 +209,93 @@ metrics.worddiffs
 
 Calculate the differences on a per-word basis
 
+:example dialect: 'html'
+
 :param ref: Reference text
 :param hyp: Hypothesis text
+
+list.benchmark
+--------------
+
+Get a list of available core benchmark
+
+:return object: With key being the benchmark name, and value its description
+
+benchmark.diffcounts
+--------------------
+
+Get the amount of differences between reference and hypothesis
+
+:param ref: Reference text
+:param hyp: Hypothesis text
+:param config: The config to use
+:param bool return_logs: Return normalization logs
+
+:example ref: 'Hello darkness my OLD friend'
+:example hyp: 'Hello darkness my old foe'
+:example config:
+
+        .. code-block:: text
+
+            [normalization]
+            # using a simple config file
+            Lowercase
+
+:example result: ""
+
+benchmark.wer
+-------------
+
+Word Error Rate, basically defined as:
+
+.. code-block:: text
+
+    insertions + deletions + substitions
+    ------------------------------------
+         number of reference words
+
+See: https://en.wikipedia.org/wiki/Word_error_rate
+
+:param ref: Reference text
+:param hyp: Hypothesis text
+:param config: The config to use
+:param bool return_logs: Return normalization logs
+
+:example ref: 'Hello darkness my OLD friend'
+:example hyp: 'Hello darkness my old foe'
+:example config:
+
+        .. code-block:: text
+
+            [normalization]
+            # using a simple config file
+            Lowercase
+
+:example result: ""
+
+benchmark.worddiffs
+-------------------
+
+Calculate the differences on a per-word basis
+
+:example dialect: 'html'
+
+:param ref: Reference text
+:param hyp: Hypothesis text
+:param config: The config to use
+:param bool return_logs: Return normalization logs
+
+:example ref: 'Hello darkness my OLD friend'
+:example hyp: 'Hello darkness my old foe'
+:example config:
+
+        .. code-block:: text
+
+            [normalization]
+            # using a simple config file
+            Lowercase
+
+:example result: ""
 
 help
 ----
