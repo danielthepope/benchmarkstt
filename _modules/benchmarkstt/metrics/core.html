@@ -249,7 +249,10 @@
             <span class="n">counts</span><span class="o">.</span><span class="n">delete</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEL_PENALTY</span> <span class="o">+</span> \
             <span class="n">counts</span><span class="o">.</span><span class="n">insert</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">INS_PENALTY</span>
 
-        <span class="k">return</span> <span class="n">changes</span> <span class="o">/</span> <span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">equal</span> <span class="o">+</span> <span class="n">changes</span><span class="p">)</span></div></div>
+        <span class="n">total_ref</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">equal</span> <span class="o">+</span> <span class="n">counts</span><span class="o">.</span><span class="n">replace</span> <span class="o">+</span> <span class="n">counts</span><span class="o">.</span><span class="n">delete</span>
+        <span class="k">if</span> <span class="n">total_ref</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">changes</span> <span class="o">/</span> <span class="n">total_ref</span></div></div>
 
 
 <div class="viewcode-block" id="DiffCounts"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.DiffCounts">[docs]</a><span class="k">class</span> <span class="nc">DiffCounts</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>

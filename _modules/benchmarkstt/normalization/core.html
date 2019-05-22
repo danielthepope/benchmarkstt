@@ -166,6 +166,11 @@
 <span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">DEFAULT_ENCODING</span>
 
 
+<span class="n">file_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,)</span>
+<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">os</span><span class="p">,</span> <span class="s1">&#39;PathLike&#39;</span><span class="p">):</span>
+    <span class="n">file_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="Replace"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Replace">[docs]</a><span class="k">class</span> <span class="nc">Replace</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">BaseWithFileSupport</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simple search replace</span>
@@ -363,7 +368,7 @@
         <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_section</span>
 
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">in</span> <span class="n">file_types</span><span class="p">:</span>
             <span class="c1"># next filenames are relative from path of the config file...</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
             <span class="n">title</span> <span class="o">=</span> <span class="n">file</span>

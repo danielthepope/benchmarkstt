@@ -158,43 +158,6 @@
 <span class="kn">from</span> <span class="nn">benchmarkstt.diff</span> <span class="k">import</span> <span class="n">Base</span>
 
 
-<span class="c1"># class HuntMcIlroy:</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     Implements the Hunt–McIlroy algorithm.</span>
-<span class="c1">#</span>
-<span class="c1">#     More information available at https://en.wikipedia.org/wiki/Hunt%E2%80%93McIlroy_algorithm</span>
-<span class="c1">#</span>
-<span class="c1">#     Mimics structure of difflib.SequenceMatcher</span>
-<span class="c1">#</span>
-<span class="c1">#     Status: TODO make a proper diff implementing Hunt–McIlroy algorithm</span>
-<span class="c1">#     (see https://github.com/ebu/benchmarkstt/issues/30)</span>
-<span class="c1">#</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#</span>
-<span class="c1">#     def __init__(self, a=&#39;&#39;, b=&#39;&#39;):</span>
-<span class="c1">#         self.a = a</span>
-<span class="c1">#         self.b = b</span>
-<span class="c1">#         self.opcodes = None</span>
-<span class="c1">#         self.matching_blocks = None</span>
-<span class="c1">#</span>
-<span class="c1">#     def set_seqs(self, a, b):</span>
-<span class="c1">#         self.a = a</span>
-<span class="c1">#         self.b = b</span>
-<span class="c1">#</span>
-<span class="c1">#     def set_seq1(self, a):</span>
-<span class="c1">#         self.a = a</span>
-<span class="c1">#</span>
-<span class="c1">#     def set_seq2(self, b):</span>
-<span class="c1">#         self.b = b</span>
-<span class="c1">#</span>
-<span class="c1">#     def find_longest_match(self, alo, ahi, blo, bhi):</span>
-<span class="c1">#         raise NotImplementedError()</span>
-<span class="c1">#</span>
-<span class="c1">#     # re-use get_matching_blocks and get_opcodes from difflib</span>
-<span class="c1">#     get_matching_blocks = SequenceMatcher.get_matching_blocks</span>
-<span class="c1">#     get_opcodes = SequenceMatcher.get_opcodes</span>
-
-
 <div class="viewcode-block" id="RatcliffObershelp"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.core.html#benchmarkstt.diff.core.RatcliffObershelp">[docs]</a><span class="k">class</span> <span class="nc">RatcliffObershelp</span><span class="p">(</span><span class="n">SequenceMatcher</span><span class="p">,</span> <span class="n">Base</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span> <span class="s1">&#39;autojunk&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>

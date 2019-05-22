@@ -318,10 +318,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;formatter_class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ActionWithArgumentsFormatter</span>
 
-        <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">docs</span> <span class="o">=</span> <span class="s1">&#39;TODO: add description to benchmarkstt.</span><span class="si">%s</span><span class="s1">.cli&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="p">,)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">docs</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">if</span> <span class="n">cli</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;TODO: add description to benchmarkstt.</span><span class="si">%s</span><span class="s1">.cli&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="p">,))</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
         <span class="n">subparser</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 

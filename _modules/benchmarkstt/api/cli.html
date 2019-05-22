@@ -241,7 +241,7 @@
     <span class="k">return</span> <span class="n">app</span></div>
 
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../modules/benchmarkstt.api.cli.html#benchmarkstt.api.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../modules/benchmarkstt.api.cli.html#benchmarkstt.api.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>  <span class="c1"># pragma: nocover</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">list_methods</span><span class="p">:</span>
         <span class="n">methods</span> <span class="o">=</span> <span class="n">get_methods</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">methods</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -250,7 +250,6 @@
             <span class="nb">print</span><span class="p">(</span><span class="n">format_docs</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-
         <span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">with_explorer</span><span class="p">)</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">)</span></div>
 </pre></div>
