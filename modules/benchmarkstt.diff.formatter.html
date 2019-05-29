@@ -102,6 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.output.html">benchmarkstt.output package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
 </ul>
 </li>
@@ -198,21 +199,10 @@
 <code class="descname">insert_format</code><em class="property"> = '\x1b[32m%s\x1b[0m'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.insert_format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="staticmethod">
 <dt id="benchmarkstt.diff.formatter.CLIDiffDialect.preprocessor">
-<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return printable representation of ascii/utf-8 control characters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>char</strong> (<em>str</em>) – </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return str:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<em class="property">static </em><code class="descname">preprocessor</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#CLIDiffDialect.preprocessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.CLIDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -240,6 +230,11 @@
 <code class="descname">insert_format</code><em class="property"> = '%s'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.insert_format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.Dialect.output">
+<code class="descname">output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#Dialect.output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="benchmarkstt.diff.formatter.Dialect.preprocessor">
 <code class="descname">preprocessor</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.preprocessor" title="Permalink to this definition">¶</a></dt>
@@ -248,6 +243,11 @@
 <dl class="attribute">
 <dt id="benchmarkstt.diff.formatter.Dialect.replace_format">
 <code class="descname">replace_format</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.replace_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.diff.formatter.Dialect.stream">
+<code class="descname">stream</code><a class="headerlink" href="#benchmarkstt.diff.formatter.Dialect.stream" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -263,12 +263,17 @@
 
 <dl class="attribute">
 <dt id="benchmarkstt.diff.formatter.DiffFormatter.diff_dialects">
-<code class="descname">diff_dialects</code><em class="property"> = {'cli': &lt;class 'benchmarkstt.diff.formatter.CLIDiffDialect'&gt;, 'html': &lt;class 'benchmarkstt.diff.formatter.HTMLDiffDialect'&gt;, 'text': &lt;class 'benchmarkstt.diff.formatter.UTF8Dialect'&gt;}</em><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.diff_dialects" title="Permalink to this definition">¶</a></dt>
+<code class="descname">diff_dialects</code><em class="property"> = {'cli': &lt;class 'benchmarkstt.diff.formatter.CLIDiffDialect'&gt;, 'html': &lt;class 'benchmarkstt.diff.formatter.HTMLDiffDialect'&gt;, 'json': &lt;class 'benchmarkstt.diff.formatter.JSONDiffDialect'&gt;, 'list': &lt;class 'benchmarkstt.diff.formatter.ListDialect'&gt;, 'text': &lt;class 'benchmarkstt.diff.formatter.UTF8Dialect'&gt;}</em><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.diff_dialects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="benchmarkstt.diff.formatter.DiffFormatter.format">
 <code class="descname">format</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#DiffFormatter.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="benchmarkstt.diff.formatter.DiffFormatter.has_dialect">
+<em class="property">classmethod </em><code class="descname">has_dialect</code><span class="sig-paren">(</span><em>dialect</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#DiffFormatter.has_dialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.DiffFormatter.has_dialect" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -292,14 +297,89 @@
 <code class="descname">insert_format</code><em class="property"> = '&lt;span class=&quot;insert&quot;&gt;%s&lt;/span&gt;'</em><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.insert_format" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="staticmethod">
 <dt id="benchmarkstt.diff.formatter.HTMLDiffDialect.preprocessor">
-<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
-<dd><p>escape(s) -&gt; markup</p>
-<p>Convert the characters &amp;, &lt;, &gt;, ‘, and ” in string s to HTML-safe
-sequences.  Use this if you need to display text that might contain
-such characters in HTML.  Marks return value as markup string.</p>
+<em class="property">static </em><code class="descname">preprocessor</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#HTMLDiffDialect.preprocessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.HTMLDiffDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.JSONDiffDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">JSONDiffDialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#JSONDiffDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.JSONDiffDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.ListDialect" title="benchmarkstt.diff.formatter.ListDialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.ListDialect</span></code></a></p>
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.JSONDiffDialect.output">
+<code class="descname">output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#JSONDiffDialect.output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.JSONDiffDialect.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="benchmarkstt.diff.formatter.ListDialect">
+<em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">ListDialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.Dialect" title="benchmarkstt.diff.formatter.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.Dialect</span></code></a></p>
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.delete_format">
+<code class="descname">delete_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.delete_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.delete_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.equal_format">
+<code class="descname">equal_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.equal_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.equal_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.insert_format">
+<code class="descname">insert_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.insert_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.output">
+<code class="descname">output</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.ListDialect.preprocessor">
+<em class="property">static </em><code class="descname">preprocessor</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.preprocessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.ListDialect.replace_format">
+<code class="descname">replace_format</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#ListDialect.replace_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.ListDialect.replace_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -307,28 +387,9 @@ such characters in HTML.  Marks return value as markup string.</p>
 <dt id="benchmarkstt.diff.formatter.UTF8Dialect">
 <em class="property">class </em><code class="descclassname">benchmarkstt.diff.formatter.</code><code class="descname">UTF8Dialect</code><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#benchmarkstt.diff.formatter.Dialect" title="benchmarkstt.diff.formatter.Dialect"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.diff.formatter.Dialect</span></code></a></p>
-<dl class="staticmethod">
+<dl class="method">
 <dt id="benchmarkstt.diff.formatter.UTF8Dialect.delete_format">
-<em class="property">static </em><code class="descname">delete_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.delete_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.delete_format" title="Permalink to this definition">¶</a></dt>
-<dd><p>str(object=’‘) -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to ‘strict’.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="benchmarkstt.diff.formatter.UTF8Dialect.format">
-<em class="property">static </em><code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.format" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="benchmarkstt.diff.formatter.UTF8Dialect.insert_format">
-<em class="property">static </em><code class="descname">insert_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.insert_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.delete_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.delete_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>str(object=’‘) -&gt; str
 str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
 <p>Create a new string object from the given object. If encoding or
@@ -341,20 +402,28 @@ errors defaults to ‘strict’.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="benchmarkstt.diff.formatter.UTF8Dialect.preprocessor">
-<code class="descname">preprocessor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.preprocessor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return printable representation of ascii/utf-8 control characters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>char</strong> (<em>str</em>) – </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return str:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>names</em>, <em>diff</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.insert_format">
+<code class="descname">insert_format</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.insert_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.insert_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>str(object=’‘) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
 </dd></dl>
+
+<dl class="staticmethod">
+<dt id="benchmarkstt.diff.formatter.UTF8Dialect.preprocessor">
+<em class="property">static </em><code class="descname">preprocessor</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/diff/formatter.html#UTF8Dialect.preprocessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.diff.formatter.UTF8Dialect.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

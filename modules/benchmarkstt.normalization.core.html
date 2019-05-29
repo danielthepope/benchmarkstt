@@ -102,6 +102,7 @@
 <li class="toctree-l4"><a class="reference internal" href="benchmarkstt.normalization.html#module-benchmarkstt.normalization">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.output.html">benchmarkstt.output package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
 </ul>
 </li>
@@ -206,7 +207,8 @@ double quotes: <cite>“”</cite>.</li>
 </dd>
 </dl>
 <p>The normalization rules are applied top-to-bottom and follow this format:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># This is a comment
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[normalization]
+# This is a comment
 
 # (Normalizer2 has no arguments)
 lowercase
@@ -229,7 +231,7 @@ replace     replaces.csv
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>file</strong> – The config file</li>
 <li><strong>encoding</strong> – The file encoding</li>
-<li><strong>section</strong> – The subsection of the config file to use (if applicable)</li>
+<li><strong>section</strong> – The subsection of the config file to use, defaults to ‘normalization’</li>
 </ul>
 </td>
 </tr>
@@ -248,9 +250,19 @@ replace     replaces.csv
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="classmethod">
 <dt id="benchmarkstt.normalization.core.Config.default_section">
-<code class="descname">default_section</code><em class="property"> = None</em><a class="headerlink" href="#benchmarkstt.normalization.core.Config.default_section" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">default_section</code><span class="sig-paren">(</span><em>section</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Config.default_section"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Config.default_section" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="benchmarkstt.normalization.core.Config.doc_string">
+<code class="descname">doc_string</code><em class="property"> = '\n    Use config file notation to define normalization rules. This notation is a\n    list of normalizers, one per line.\n\n    Each normalizer that is based needs a file is followed by a file name of a\n    csv, and can be optionally followed by the file encoding (if different than\n    default).\n    All options are loaded in from this csv and applied to the normalizer.\n\n    The normalizers can be any of the core normalizers, or you can refer to your\n    own normalizer class (like you would use in a python import, eg.\n    `my.own.package.MyNormalizerClass`).\n\n    Additional rules:\n      - Normalizer names are case-insensitive.\n      - Arguments MAY be wrapped in double quotes.\n      - If an argument contains a space, newline or double quote, it MUST be\n        wrapped in double quotes.\n      - A double quote itself is represented in this quoted argument as two\n        double quotes: `&quot;&quot;`.\n\n    The normalization rules are applied top-to-bottom and follow this format:\n\n    .. code-block:: text\n\n        {[section]}\n        # This is a comment\n\n        # (Normalizer2 has no arguments)\n        lowercase\n\n        # loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding\n        regex regexrules.csv &quot;utf 8&quot;\n\n        # load another config file, [section1] and [section2]\n        config configfile.ini section1\n        config configfile.ini section2\n\n        # loads replace expressions from replaces.csv in default encoding\n        replace     replaces.csv\n\n    :param file: The config file\n    :param encoding: The file encoding\n    :param section: The subsection of the config file to use, {section}\n\n    :example text: &quot;He bravely turned his tail and fled&quot;\n    :example file: &quot;./resources/test/normalizers/configfile.conf&quot;\n    :example encoding: &quot;UTF-8&quot;\n    :example return: &quot;ha bravalY Turnad his tail and flad&quot;\n    '</em><a class="headerlink" href="#benchmarkstt.normalization.core.Config.doc_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="benchmarkstt.normalization.core.Config.refresh_docstring">
+<em class="property">classmethod </em><code class="descname">refresh_docstring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt/normalization/core.html#Config.refresh_docstring"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.normalization.core.Config.refresh_docstring" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -1,0 +1,7 @@
+benchmarkstt.output.core module
+===============================
+
+.. automodule:: benchmarkstt.output.core
+    :members:
+    :undoc-members:
+    :show-inheritance:

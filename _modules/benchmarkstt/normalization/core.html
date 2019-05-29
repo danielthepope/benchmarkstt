@@ -166,6 +166,7 @@
 <span class="kn">from</span> <span class="nn">unidecode</span> <span class="k">import</span> <span class="n">unidecode</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">normalization</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">DEFAULT_ENCODING</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
 
 
 <span class="n">file_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,)</span>
@@ -311,64 +312,65 @@
 
 
 <div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">normalization</span><span class="o">.</span><span class="n">Base</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Use config file notation to define normalization rules. This notation is a</span>
-<span class="sd">    list of normalizers, one per line.</span>
+    <span class="n">doc_string</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Use config file notation to define normalization rules. This notation is a</span>
+<span class="s2">    list of normalizers, one per line.</span>
 
-<span class="sd">    Each normalizer that is based needs a file is followed by a file name of a</span>
-<span class="sd">    csv, and can be optionally followed by the file encoding (if different than</span>
-<span class="sd">    default).</span>
-<span class="sd">    All options are loaded in from this csv and applied to the normalizer.</span>
+<span class="s2">    Each normalizer that is based needs a file is followed by a file name of a</span>
+<span class="s2">    csv, and can be optionally followed by the file encoding (if different than</span>
+<span class="s2">    default).</span>
+<span class="s2">    All options are loaded in from this csv and applied to the normalizer.</span>
 
-<span class="sd">    The normalizers can be any of the core normalizers, or you can refer to your</span>
-<span class="sd">    own normalizer class (like you would use in a python import, eg.</span>
-<span class="sd">    `my.own.package.MyNormalizerClass`).</span>
+<span class="s2">    The normalizers can be any of the core normalizers, or you can refer to your</span>
+<span class="s2">    own normalizer class (like you would use in a python import, eg.</span>
+<span class="s2">    `my.own.package.MyNormalizerClass`).</span>
 
-<span class="sd">    Additional rules:</span>
-<span class="sd">      - Normalizer names are case-insensitive.</span>
-<span class="sd">      - Arguments MAY be wrapped in double quotes.</span>
-<span class="sd">      - If an argument contains a space, newline or double quote, it MUST be</span>
-<span class="sd">        wrapped in double quotes.</span>
-<span class="sd">      - A double quote itself is represented in this quoted argument as two</span>
-<span class="sd">        double quotes: `&quot;&quot;`.</span>
+<span class="s2">    Additional rules:</span>
+<span class="s2">      - Normalizer names are case-insensitive.</span>
+<span class="s2">      - Arguments MAY be wrapped in double quotes.</span>
+<span class="s2">      - If an argument contains a space, newline or double quote, it MUST be</span>
+<span class="s2">        wrapped in double quotes.</span>
+<span class="s2">      - A double quote itself is represented in this quoted argument as two</span>
+<span class="s2">        double quotes: `&quot;&quot;`.</span>
 
-<span class="sd">    The normalization rules are applied top-to-bottom and follow this format:</span>
+<span class="s2">    The normalization rules are applied top-to-bottom and follow this format:</span>
 
-<span class="sd">    .. code-block:: text</span>
+<span class="s2">    .. code-block:: text</span>
 
-<span class="sd">        # This is a comment</span>
+<span class="s2">        {[section]}</span>
+<span class="s2">        # This is a comment</span>
 
-<span class="sd">        # (Normalizer2 has no arguments)</span>
-<span class="sd">        lowercase</span>
+<span class="s2">        # (Normalizer2 has no arguments)</span>
+<span class="s2">        lowercase</span>
 
-<span class="sd">        # loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding</span>
-<span class="sd">        regex regexrules.csv &quot;utf 8&quot;</span>
+<span class="s2">        # loads regex expressions from regexrules.csv in &quot;utf 8&quot; encoding</span>
+<span class="s2">        regex regexrules.csv &quot;utf 8&quot;</span>
 
-<span class="sd">        # load another config file, [section1] and [section2]</span>
-<span class="sd">        config configfile.ini section1</span>
-<span class="sd">        config configfile.ini section2</span>
+<span class="s2">        # load another config file, [section1] and [section2]</span>
+<span class="s2">        config configfile.ini section1</span>
+<span class="s2">        config configfile.ini section2</span>
 
-<span class="sd">        # loads replace expressions from replaces.csv in default encoding</span>
-<span class="sd">        replace     replaces.csv</span>
+<span class="s2">        # loads replace expressions from replaces.csv in default encoding</span>
+<span class="s2">        replace     replaces.csv</span>
 
-<span class="sd">    :param file: The config file</span>
-<span class="sd">    :param encoding: The file encoding</span>
-<span class="sd">    :param section: The subsection of the config file to use (if applicable)</span>
+<span class="s2">    :param file: The config file</span>
+<span class="s2">    :param encoding: The file encoding</span>
+<span class="s2">    :param section: The subsection of the config file to use, </span><span class="si">{section}</span><span class="s2"></span>
 
-<span class="sd">    :example text: &quot;He bravely turned his tail and fled&quot;</span>
-<span class="sd">    :example file: &quot;./resources/test/normalizers/configfile.conf&quot;</span>
-<span class="sd">    :example encoding: &quot;UTF-8&quot;</span>
-<span class="sd">    :example return: &quot;ha bravalY Turnad his tail and flad&quot;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="s2">    :example text: &quot;He bravely turned his tail and fled&quot;</span>
+<span class="s2">    :example file: &quot;./resources/test/normalizers/configfile.conf&quot;</span>
+<span class="s2">    :example encoding: &quot;UTF-8&quot;</span>
+<span class="s2">    :example return: &quot;ha bravalY Turnad his tail and flad&quot;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-    <span class="n">default_section</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_default_section</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">encoding</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="n">encoding</span> <span class="o">=</span> <span class="n">DEFAULT_ENCODING</span>
 
         <span class="k">if</span> <span class="n">section</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_section</span>
+            <span class="n">section</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_section</span>
 
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">in</span> <span class="n">file_types</span><span class="p">:</span>
             <span class="c1"># next filenames are relative from path of the config file...</span>
@@ -403,7 +405,27 @@
                                  <span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">line</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">line</span><span class="p">))))</span>
 
     <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalizer</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalizer</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Config.default_section"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Config.default_section">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">default_section</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">section</span><span class="p">):</span>
+        <span class="n">prev_section</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span> <span class="o">=</span> <span class="n">section</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">refresh_docstring</span><span class="p">()</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span> <span class="o">=</span> <span class="n">prev_section</span></div>
+
+<div class="viewcode-block" id="Config.refresh_docstring"><a class="viewcode-back" href="../../../modules/benchmarkstt.normalization.core.html#benchmarkstt.normalization.core.Config.refresh_docstring">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">refresh_docstring</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">section</span> <span class="o">=</span> <span class="s1">&#39;defaults to </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span><span class="p">),)</span> <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span> <span class="k">else</span> <span class="s1">&#39;no section by default&#39;</span>
+        <span class="n">section_tag</span> <span class="o">=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span><span class="p">,)</span> <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_default_section</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">doc_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{section}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;{[section]}&#39;</span><span class="p">,</span> <span class="n">section_tag</span><span class="p">)</span></div></div>
+
+
+<span class="n">Config</span><span class="o">.</span><span class="n">refresh_docstring</span><span class="p">()</span>
 </pre></div>
 
            </div>

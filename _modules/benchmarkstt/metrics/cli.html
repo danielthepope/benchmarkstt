@@ -161,10 +161,12 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">benchmarkstt.input</span> <span class="k">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt.output</span> <span class="k">import</span> <span class="n">factory</span> <span class="k">as</span> <span class="n">output_factory</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.metrics</span> <span class="k">import</span> <span class="n">factory</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.cli</span> <span class="k">import</span> <span class="n">args_from_factory</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.cli</span> <span class="k">import</span> <span class="n">ActionWithArgumentsFormatter</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="k">import</span> <span class="n">signature</span><span class="p">,</span> <span class="n">Parameter</span>
 
 
 <span class="n">Formatter</span> <span class="o">=</span> <span class="n">ActionWithArgumentsFormatter</span>
@@ -173,13 +175,16 @@
 <div class="viewcode-block" id="argparser"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.cli.html#benchmarkstt.metrics.cli.argparser">[docs]</a><span class="k">def</span> <span class="nf">argparser</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
     <span class="c1"># steps: input normalize[pre?] segmentation normalize[post?] compare</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The file to use as reference&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;hypothesis&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The file to use as hypothesis&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;file to use as reference&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;hypothesis&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;file to use as hypothesis&#39;</span><span class="p">)</span>
 
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-rt&#39;</span><span class="p">,</span> <span class="s1">&#39;--reference-type&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Type of reference file&#39;</span><span class="p">)</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;type of reference file&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-ht&#39;</span><span class="p">,</span> <span class="s1">&#39;--hypothesis-type&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Type of hypothesis file&#39;</span><span class="p">)</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;type of hypothesis file&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output-format&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">output_factory</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;format of the outputted results&#39;</span><span class="p">)</span>
 
     <span class="n">metrics_desc</span> <span class="o">=</span> <span class="s2">&quot;A list of metrics to calculate. At least one metric needs to be provided.&quot;</span>
 
@@ -204,19 +209,29 @@
     <span class="k">if</span> <span class="s1">&#39;metrics&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">args</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">metrics</span><span class="p">):</span>
         <span class="n">parser</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;need at least one metric&quot;</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">metrics</span><span class="p">:</span>
-        <span class="n">metric_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">metric_name</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">metric_name</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="n">metric</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">metric_name</span><span class="p">,</span> <span class="o">*</span><span class="n">item</span><span class="p">)</span>
-        <span class="c1"># todo: different output options</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">hyp</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.6f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">,))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span></div>
+    <span class="k">with</span> <span class="n">output_factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output_format</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">metrics</span><span class="p">:</span>
+            <span class="n">metric_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="bp">cls</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">metric_name</span><span class="p">)</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+            <span class="c1"># somewhat hacky default diff formats for metrics</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
+            <span class="n">sigkeys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s1">&#39;dialect&#39;</span> <span class="ow">in</span> <span class="n">sigkeys</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">sigkeys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;dialect&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="n">sig</span><span class="p">[</span><span class="s1">&#39;dialect&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">sig</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">,</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_ONLY</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">idx</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">output_format</span> <span class="o">==</span> <span class="s1">&#39;json&#39;</span><span class="p">:</span>
+                            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dialect&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;list&#39;</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;dialect&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cli&#39;</span>
+
+            <span class="n">metric</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">item</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">hyp</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="n">metric_name</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

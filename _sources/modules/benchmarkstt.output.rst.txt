@@ -1,0 +1,17 @@
+benchmarkstt.output package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+
+   benchmarkstt.output.core
+
+Module contents
+---------------
+
+.. automodule:: benchmarkstt.output
+    :members:
+    :undoc-members:
+    :show-inheritance:

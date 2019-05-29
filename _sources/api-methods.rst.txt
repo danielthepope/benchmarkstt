@@ -50,6 +50,7 @@ The normalization rules are applied top-to-bottom and follow this format:
 
 .. code-block:: text
 
+
     # This is a comment
 
     # (Normalizer2 has no arguments)
@@ -67,7 +68,7 @@ The normalization rules are applied top-to-bottom and follow this format:
 
 :param file: The config file
 :param encoding: The file encoding
-:param section: The subsection of the config file to use (if applicable)
+:param section: The subsection of the config file to use, no section by default
 
 :example text: "He bravely turned his tail and fled"
 :example file: "./resources/test/normalizers/configfile.conf"

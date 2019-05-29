@@ -177,6 +177,7 @@
 <h1>Subcommand metrics<a class="headerlink" href="#subcommand-metrics" title="Permalink to this headline">¶</a></h1>
 <p>Calculate metrics based on the comparison of a hypothesis with a reference.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">benchmarkstt</span><span class="o">-</span><span class="n">tools</span> <span class="n">metrics</span> <span class="p">[</span><span class="o">-</span><span class="n">rt</span> <span class="n">REFERENCE_TYPE</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ht</span> <span class="n">HYPOTHESIS_TYPE</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="p">{</span><span class="n">csv</span><span class="p">,</span><span class="n">json</span><span class="p">,</span><span class="n">markdown</span><span class="p">,</span><span class="n">restructuredtext</span><span class="p">}]</span>
                                   <span class="p">[</span><span class="o">--</span><span class="n">diffcounts</span> <span class="p">[</span><span class="n">differ_class</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">wer</span> <span class="p">[</span><span class="n">mode</span><span class="p">]</span>
                                   <span class="p">[</span><span class="n">differ_class</span><span class="p">]]</span> <span class="p">[</span><span class="o">--</span><span class="n">worddiffs</span> <span class="p">[</span><span class="n">dialect</span><span class="p">]</span>
                                   <span class="p">[</span><span class="n">differ_class</span><span class="p">]]</span>
@@ -193,10 +194,10 @@
 <tbody valign="top">
 <tr><td class="option-group">
 <kbd>reference</kbd></td>
-<td>The file to use as reference</td></tr>
+<td>file to use as reference</td></tr>
 <tr><td class="option-group">
 <kbd>hypothesis</kbd></td>
-<td>The file to use as hypothesis</td></tr>
+<td>file to use as hypothesis</td></tr>
 </tbody>
 </table>
 </div>
@@ -209,14 +210,21 @@
 <tr><td class="option-group" colspan="2">
 <kbd>-rt, --reference-type</kbd></td>
 </tr>
-<tr><td>&#160;</td><td><p class="first">Type of reference file</p>
+<tr><td>&#160;</td><td><p class="first">type of reference file</p>
 <p class="last">Default: “infer”</p>
 </td></tr>
 <tr><td class="option-group" colspan="2">
 <kbd>-ht, --hypothesis-type</kbd></td>
 </tr>
-<tr><td>&#160;</td><td><p class="first">Type of hypothesis file</p>
+<tr><td>&#160;</td><td><p class="first">type of hypothesis file</p>
 <p class="last">Default: “infer”</p>
+</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd>-o, --output-format</kbd></td>
+</tr>
+<tr><td>&#160;</td><td><p class="first">Possible choices: csv, json, markdown, restructuredtext</p>
+<p>format of the outputted results</p>
+<p class="last">Default: “restructuredtext”</p>
 </td></tr>
 <tr><td class="option-group">
 <kbd>--log-level</kbd></td>

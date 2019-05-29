@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.input.html">benchmarkstt.input package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.metrics.html">benchmarkstt.metrics package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.normalization.html">benchmarkstt.normalization package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.output.html">benchmarkstt.output package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a></li>
 </ul>
 </li>
@@ -242,6 +243,14 @@
 <li class="toctree-l2"><a class="reference internal" href="benchmarkstt.normalization.html#module-benchmarkstt.normalization">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarkstt.output.html">benchmarkstt.output package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.output.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarkstt.output.core.html">benchmarkstt.output.core module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarkstt.output.html#module-benchmarkstt.output">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="benchmarkstt.segmentation.html">benchmarkstt.segmentation package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="benchmarkstt.segmentation.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="benchmarkstt.segmentation.core.html">benchmarkstt.segmentation.core module</a></li>
@@ -272,6 +281,13 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-benchmarkstt" title="Permalink to this headline">¶</a></h2>
 <p>Package benchmarkstt</p>
 <dl class="class">
+<dt id="benchmarkstt.DeferredCallback">
+<em class="property">class </em><code class="descclassname">benchmarkstt.</code><code class="descname">DeferredCallback</code><span class="sig-paren">(</span><em>cb</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt.html#DeferredCallback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.DeferredCallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple helper class to defer the execution of formatting functions until it is needed</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="benchmarkstt.DeferredList">
 <em class="property">class </em><code class="descclassname">benchmarkstt.</code><code class="descname">DeferredList</code><span class="sig-paren">(</span><em>cb</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt.html#DeferredList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.DeferredList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -285,15 +301,8 @@
 <dl class="class">
 <dt id="benchmarkstt.DeferredRepr">
 <em class="property">class </em><code class="descclassname">benchmarkstt.</code><code class="descname">DeferredRepr</code><span class="sig-paren">(</span><em>val</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt.html#DeferredRepr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.DeferredRepr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#benchmarkstt.DeferredCallback" title="benchmarkstt.DeferredCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">benchmarkstt.DeferredCallback</span></code></a></p>
 <p>Simple helper class to defer the execution of repr call until it is needed</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="benchmarkstt.DeferredStr">
-<em class="property">class </em><code class="descclassname">benchmarkstt.</code><code class="descname">DeferredStr</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/benchmarkstt.html#DeferredStr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#benchmarkstt.DeferredStr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Simple helper class to defer the execution of formatting functions until it is needed</p>
 </dd></dl>
 
 <dl class="function">
