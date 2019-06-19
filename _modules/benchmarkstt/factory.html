@@ -155,7 +155,6 @@
             
   <h1>Source code for benchmarkstt.factory</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">from</span> <span class="nn">benchmarkstt</span> <span class="k">import</span> <span class="n">DeferredRepr</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">import_module</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.docblock</span> <span class="k">import</span> <span class="n">format_docs</span>
@@ -238,10 +237,10 @@
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">tocheck</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">tocheck</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_class</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Not a valid class (must inherit from Base class): &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="n">DeferredRepr</span><span class="p">(</span><span class="n">tocheck</span><span class="p">))</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">tocheck</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_class</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="Factory.keys"><a class="viewcode-back" href="../../modules/benchmarkstt.factory.html#benchmarkstt.factory.Factory.keys">[docs]</a>    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>

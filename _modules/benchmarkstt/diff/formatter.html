@@ -177,10 +177,6 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
 
-<div class="viewcode-block" id="Dialect.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.Dialect.format">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span>
@@ -202,11 +198,7 @@
         <span class="k">return</span> <span class="n">make_printable</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
     <span class="n">delete_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[31m</span><span class="si">%s</span><span class="se">\033</span><span class="s1">[0m&#39;</span>
-    <span class="n">insert_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[32m</span><span class="si">%s</span><span class="se">\033</span><span class="s1">[0m&#39;</span>
-
-<div class="viewcode-block" id="CLIDiffDialect.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.CLIDiffDialect.format">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">diff</span></div></div>
+    <span class="n">insert_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[32m</span><span class="si">%s</span><span class="se">\033</span><span class="s1">[0m&#39;</span></div>
 
 
 <div class="viewcode-block" id="UTF8Dialect"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.UTF8Dialect">[docs]</a><span class="k">class</span> <span class="nc">UTF8Dialect</span><span class="p">(</span><span class="n">Dialect</span><span class="p">):</span>
@@ -218,10 +210,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\u0338</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="UTF8Dialect.insert_format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.UTF8Dialect.insert_format">[docs]</a>    <span class="k">def</span> <span class="nf">insert_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">txt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\u0359</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="UTF8Dialect.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.UTF8Dialect.format">[docs]</a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">diff</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\u0359</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="HTMLDiffDialect"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.HTMLDiffDialect">[docs]</a><span class="k">class</span> <span class="nc">HTMLDiffDialect</span><span class="p">(</span><span class="n">Dialect</span><span class="p">):</span>
@@ -230,11 +219,7 @@
         <span class="k">return</span> <span class="n">escape</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
     <span class="n">delete_format</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;delete&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&#39;</span>
-    <span class="n">insert_format</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;insert&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&#39;</span>
-
-<div class="viewcode-block" id="HTMLDiffDialect.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.HTMLDiffDialect.format">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">names</span><span class="p">,</span> <span class="n">diff</span></div></div>
+    <span class="n">insert_format</span> <span class="o">=</span> <span class="s1">&#39;&lt;span class=&quot;insert&quot;&gt;</span><span class="si">%s</span><span class="s1">&lt;/span&gt;&#39;</span></div>
 
 
 <div class="viewcode-block" id="ListDialect"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.ListDialect">[docs]</a><span class="k">class</span> <span class="nc">ListDialect</span><span class="p">(</span><span class="n">Dialect</span><span class="p">):</span>
@@ -270,6 +255,11 @@
             <span class="n">result</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(((</span><span class="s1">&#39;kind&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="n">ref</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;hypothesis&#39;</span><span class="p">,</span> <span class="n">hyp</span><span class="p">)))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">oor</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">word_</span> <span class="ow">in</span> <span class="n">txt2</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(((</span><span class="s1">&#39;kind&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;reference&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;hypothesis&#39;</span><span class="p">,</span> <span class="n">word_</span><span class="p">)))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">return</span> <span class="bp">self</span>
@@ -278,10 +268,7 @@
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="ListDialect.output"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.ListDialect.output">[docs]</a>    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span></div>
-
-<div class="viewcode-block" id="ListDialect.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.ListDialect.format">[docs]</a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">diff</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">names</span><span class="p">,</span> <span class="n">diff</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span></div></div>
 
 
 <div class="viewcode-block" id="JSONDiffDialect"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.JSONDiffDialect">[docs]</a><span class="k">class</span> <span class="nc">JSONDiffDialect</span><span class="p">(</span><span class="n">ListDialect</span><span class="p">):</span>
@@ -320,7 +307,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_dialect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff_dialects</span><span class="p">[</span><span class="n">dialect</span><span class="p">]()</span>
 
 <div class="viewcode-block" id="DiffFormatter.format"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.DiffFormatter.format">[docs]</a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dialect</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span></div>
+        <span class="k">return</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="DiffFormatter.diff"><a class="viewcode-back" href="../../../modules/benchmarkstt.diff.formatter.html#benchmarkstt.diff.formatter.DiffFormatter.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">opcodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">formats</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">insert</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">equal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>

@@ -159,7 +159,7 @@
 <span></span><span class="kn">from</span> <span class="nn">benchmarkstt.schema</span> <span class="k">import</span> <span class="n">Schema</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.diff.core</span> <span class="k">import</span> <span class="n">RatcliffObershelp</span>
-<span class="kn">from</span> <span class="nn">benchmarkstt.diff.formatter</span> <span class="k">import</span> <span class="n">format_diff</span><span class="p">,</span> <span class="n">DiffFormatter</span>
+<span class="kn">from</span> <span class="nn">benchmarkstt.diff.formatter</span> <span class="k">import</span> <span class="n">format_diff</span>
 <span class="kn">from</span> <span class="nn">benchmarkstt.metrics</span> <span class="k">import</span> <span class="n">Base</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
 
@@ -226,8 +226,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># TODO: proper documenting of different modes</span>
-    <span class="n">MODE_STRICT</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">MODE_HUNT</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">MODE_STRICT</span> <span class="o">=</span> <span class="s1">&#39;strict&#39;</span>
+    <span class="n">MODE_HUNT</span> <span class="o">=</span> <span class="s1">&#39;hunt&#39;</span>
 
     <span class="n">DEL_PENALTY</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">INS_PENALTY</span> <span class="o">=</span> <span class="mi">1</span>
@@ -237,7 +237,7 @@
         <span class="k">if</span> <span class="n">differ_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">differ_class</span> <span class="o">=</span> <span class="n">RatcliffObershelp</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_differ_class</span> <span class="o">=</span> <span class="n">differ_class</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_HUNT</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_HUNT</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">DEL_PENALTY</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">INS_PENALTY</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
 
 <div class="viewcode-block" id="WER.compare"><a class="viewcode-back" href="../../../modules/benchmarkstt.metrics.core.html#benchmarkstt.metrics.core.WER.compare">[docs]</a>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">hyp</span><span class="p">:</span> <span class="n">Schema</span><span class="p">):</span>
