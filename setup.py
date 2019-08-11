@@ -62,6 +62,8 @@ setup(
     ],
     extras_require={
         'test': [
+            "behave==1.2.6",
+            "PyHamcrest==1.9.0",
             "pytest==4.2.0",
             "pycodestyle==2.5.0",
             "pytest-cov==2.5.1"
